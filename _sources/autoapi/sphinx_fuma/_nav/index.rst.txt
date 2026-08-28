@@ -1,0 +1,45 @@
+sphinx_fuma._nav
+================
+
+.. py:module:: sphinx_fuma._nav
+
+.. autoapi-nested-parse::
+
+   Structured navigation data for the templates.
+
+   Sphinx hands themes pre-rendered HTML for the sidebar (``toctree()``) and the
+   page-local table of contents (``toc``). Both are nested ``<ul>`` markup with no
+   hook for the collapsible folders and scroll-spy list this theme needs, so the
+   resolved doctrees are walked here into plain dictionaries the templates render
+   directly.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   sphinx_fuma._nav.sidebar_tree
+   sphinx_fuma._nav.page_toc
+   sphinx_fuma._nav.breadcrumbs
+
+
+Module Contents
+---------------
+
+.. py:function:: sidebar_tree(app, pagename: str, maxdepth: int = 4) -> list[dict]
+
+   Return the global toctree as a list of ``{caption, entries}`` groups.
+
+
+.. py:function:: page_toc(app, pagename: str) -> list[dict]
+
+   Return the page-local headings, excluding the document title.
+
+
+.. py:function:: breadcrumbs(context: dict) -> list[dict]
+
+   Return ancestor pages, dropping the root so it can be rendered separately.
+
+

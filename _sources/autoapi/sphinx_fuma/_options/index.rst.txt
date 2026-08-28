@@ -1,0 +1,32 @@
+sphinx_fuma._options
+====================
+
+.. py:module:: sphinx_fuma._options
+
+.. autoapi-nested-parse::
+
+   Normalisation of ``html_theme_options`` into template-friendly context values.
+
+   Sphinx passes theme options through as ``theme_<name>`` context entries whose
+   values are strings when they come from ``theme.conf`` and arbitrary Python
+   objects when they come from ``html_theme_options``. The templates want a single
+   normalised shape, so everything is coerced here rather than in Jinja.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   sphinx_fuma._options.build_context
+
+
+Module Contents
+---------------
+
+.. py:function:: build_context(context: dict) -> dict[str, object]
+
+   Return the ``fuma_*`` context entries derived from the theme options.
+
+

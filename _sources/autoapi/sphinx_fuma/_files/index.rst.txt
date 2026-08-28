@@ -1,0 +1,28 @@
+sphinx_fuma._files
+==================
+
+.. py:module:: sphinx_fuma._files
+
+.. autoapi-nested-parse::
+
+   The ``files`` directive.
+
+   Renders a project layout as a file tree. The content is an ordinary nested list,
+   so authors write plain Markdown or reStructuredText; a trailing ``/`` or the
+   presence of children marks an entry as a directory.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   sphinx_fuma._files.setup_files
+
+
+Module Contents
+---------------
+
+.. py:function:: setup_files(app) -> None
+

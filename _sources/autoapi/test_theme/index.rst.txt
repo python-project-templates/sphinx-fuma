@@ -1,0 +1,288 @@
+test_theme
+==========
+
+.. py:module:: test_theme
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   test_theme.CONF_PY
+   test_theme.INDEX_MD
+   test_theme.GUIDE_MD
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   test_theme.TestBuildContext
+   test_theme.TestRenderedOutput
+   test_theme.TestSteps
+   test_theme.TestFiles
+   test_theme.TestColorPresets
+   test_theme.TestSystemFonts
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   test_theme.built
+   test_theme.built_system_fonts
+
+
+Module Contents
+---------------
+
+.. py:data:: CONF_PY
+   :value: Multiline-String
+
+   .. raw:: html
+
+      <details><summary>Show Value</summary>
+
+   .. code-block:: python
+
+      """
+      extensions = ["myst_parser", "sphinx_fuma"]
+      myst_enable_extensions = []
+      project = "Demo"
+      html_theme = "fuma"
+      html_theme_options = {
+          "github_url": "https://github.com/example/demo",
+          "nav_links": [{"title": "Blog", "url": "https://example.com/blog"}],
+          "light_css_variables": {"color-fd-primary": "red"},
+          "sidebar_tabs": [
+              {"title": "Guides", "url": "guide.html", "description": "How to", "icon": "rocket", "match": "guide"},
+              {"title": "Reference", "url": "index.html", "description": "Details", "icon": "book", "match": "index"},
+          ],
+      }
+      """
+
+   .. raw:: html
+
+      </details>
+
+
+
+.. py:data:: INDEX_MD
+   :value: Multiline-String
+
+   .. raw:: html
+
+      <details><summary>Show Value</summary>
+
+   .. code-block:: python
+
+      """
+      # Demo
+      
+      Intro text.
+      
+      ```{toctree}
+      :caption: Guides
+      
+      guide
+      ```
+      """
+
+   .. raw:: html
+
+      </details>
+
+
+
+.. py:data:: GUIDE_MD
+   :value: Multiline-String
+
+   .. raw:: html
+
+      <details><summary>Show Value</summary>
+
+   .. code-block:: python
+
+      """---
+      icon: rocket
+      ---
+      
+      # Guide
+      
+      ## First section
+      
+      Content about widgets.
+      
+      ### Nested heading
+      
+      More detail.
+      
+      ## Second section
+      
+      Other content.
+      
+      ```{steps}
+      ### Install it
+      
+      Pull it down from the index.
+      
+      ### Run it
+      
+      Start the server.
+      ```
+      
+      ```{files}
+      - src/
+        - app.py
+      - pyproject.toml
+      ```
+      """
+
+   .. raw:: html
+
+      </details>
+
+
+
+.. py:function:: built(tmp_path_factory) -> pathlib.Path
+
+.. py:function:: built_system_fonts(tmp_path_factory) -> pathlib.Path
+
+.. py:class:: TestBuildContext
+
+   .. py:method:: test_defaults()
+
+
+   .. py:method:: test_invalid_choices_fall_back()
+
+
+   .. py:method:: test_flags_accept_theme_conf_strings()
+
+
+   .. py:method:: test_nav_links_from_string()
+
+
+   .. py:method:: test_nav_links_from_mappings()
+
+
+   .. py:method:: test_css_overrides_render_both_modes()
+
+
+   .. py:method:: test_dark_overrides_also_cover_system_preference()
+
+
+   .. py:method:: test_no_media_block_without_dark_overrides()
+
+
+   .. py:method:: test_edit_url_derived_from_github_url()
+
+
+   .. py:method:: test_no_edit_url_without_a_page()
+
+
+.. py:class:: TestRenderedOutput
+
+   .. py:method:: test_static_assets_are_copied(built)
+
+
+   .. py:method:: test_bundled_fonts_are_shipped_and_linked(built)
+
+
+   .. py:method:: test_font_licences_travel_with_the_fonts(built)
+
+
+   .. py:method:: test_layout_landmarks_are_present(built)
+
+
+   .. py:method:: test_navigation_lives_in_the_sidebar(built)
+
+
+   .. py:method:: test_theme_switch_offers_both_modes(built)
+
+
+   .. py:method:: test_page_icon_metadata_renders_in_the_sidebar(built)
+
+
+   .. py:method:: test_navigator_lists_tabs_and_marks_the_active_one(built)
+
+
+   .. py:method:: test_toc_rail_is_an_svg_with_track_and_thumb(built)
+
+
+.. py:class:: TestSteps
+
+   .. py:method:: test_directive_wraps_content_in_a_steps_container(built)
+
+
+   .. py:method:: test_each_heading_becomes_a_step(built)
+
+
+   .. py:method:: test_step_bodies_are_preserved(built)
+
+
+.. py:class:: TestFiles
+
+   .. py:method:: test_directive_builds_a_tree(built)
+
+
+   .. py:method:: test_trailing_slash_and_children_mark_folders(built)
+
+
+   .. py:method:: test_folder_slash_is_stripped_from_the_label(built)
+
+
+.. py:class:: TestColorPresets
+
+   .. py:method:: test_amber_matches_the_fumadocs_pairing()
+
+
+   .. py:method:: test_unknown_preset_changes_nothing()
+
+
+   .. py:method:: test_default_is_the_neutral_greys()
+
+
+   .. py:method:: test_explicit_variables_win_over_the_preset()
+
+
+   .. py:method:: test_preset_still_supplies_the_other_mode()
+
+
+.. py:class:: TestSystemFonts
+
+   .. py:method:: test_stylesheet_is_omitted(built_system_fonts)
+
+
+   .. py:method:: test_option_is_normalised()
+
+
+   .. py:method:: test_sidebar_renders_the_toctree_caption_and_entries(built)
+
+
+   .. py:method:: test_sidebar_lists_pages_not_headings(built)
+
+
+   .. py:method:: test_active_page_is_marked_in_the_sidebar(built)
+
+
+   .. py:method:: test_page_toc_uses_fragment_anchors(built)
+
+
+   .. py:method:: test_page_title_is_excluded_from_the_toc(built)
+
+
+   .. py:method:: test_theme_options_reach_the_templates(built)
+
+
+   .. py:method:: test_pagination_links_neighbouring_pages(built)
+
+
+   .. py:method:: test_search_uses_searchlite_rather_than_its_own_index(built)
+
+
+   .. py:method:: test_theme_supplies_its_own_dialog(built)
+
+

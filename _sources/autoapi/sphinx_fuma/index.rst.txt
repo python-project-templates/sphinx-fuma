@@ -1,0 +1,55 @@
+sphinx_fuma
+===========
+
+.. py:module:: sphinx_fuma
+
+.. autoapi-nested-parse::
+
+   :mod:`sphinx_fuma` — a Sphinx theme with a fumadocs-style layout.
+
+   The visual design system (the ``--color-fd-*`` token set and the named-area
+   grid) follows fumadocs, which is MIT licensed, Copyright (c) 2023 Fuma. Nothing
+   here is affiliated with or endorsed by that project.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/sphinx_fuma/_files/index
+   /autoapi/sphinx_fuma/_nav/index
+   /autoapi/sphinx_fuma/_options/index
+   /autoapi/sphinx_fuma/_steps/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   sphinx_fuma.THEME_DIR
+   sphinx_fuma.THEME_NAME
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   sphinx_fuma.setup
+
+
+Package Contents
+----------------
+
+.. py:data:: THEME_DIR
+
+.. py:data:: THEME_NAME
+   :value: 'fuma'
+
+
+.. py:function:: setup(app) -> dict[str, object]
+

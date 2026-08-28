@@ -1,0 +1,31 @@
+{% import "partials/icons.html" as icons with context %}
+{#- Top bar: mobile only in the docs layout, always present in the notebook layout. -#}
+<header id="fd-subnav">
+  <div class="fd-subnav-inner">
+    <button type="button" class="fd-icon-button fd-sidebar-toggle" aria-controls="fd-sidebar" aria-expanded="false" aria-label="{{ _('Toggle navigation') }}">
+      {{ icons.menu() }}
+    </button>
+
+    {%- include "partials/brand.html" %}
+
+    {%- if fuma_nav_links %}
+    <nav class="fd-nav-links" aria-label="{{ _('Site') }}">
+      {%- for link in fuma_nav_links %}
+      <a href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>
+      {%- endfor %}
+    </nav>
+    {%- endif %}
+
+    <div class="fd-nav-actions">
+      {%- if fuma_search %}
+      <button type="button" class="fd-icon-button" data-fd-search-open aria-label="{{ _('Search') }}">{{ icons.search() }}</button>
+      {%- endif %}
+      {%- if fuma_github_url %}
+      <a class="fd-icon-button" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub">{{ icons.github() }}</a>
+      {%- endif %}
+      <button type="button" class="fd-icon-button fd-theme-toggle" aria-label="{{ _('Toggle theme') }}">
+        {{ icons.sun("fd-icon-light") }}{{ icons.moon("fd-icon-dark") }}
+      </button>
+    </div>
+  </div>
+</header>

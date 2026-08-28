@@ -1,0 +1,12 @@
+{% import "partials/icons.html" as icons with context %}
+<dialog id="fd-search-dialog" aria-label="{{ _('Search') }}">
+  <form class="fd-search-panel" method="dialog" role="search">
+    <div class="fd-search-field">
+      {{ icons.search() }}
+      <input type="search" id="fd-search-input" autocomplete="off" spellcheck="false" placeholder="{{ _('Search documentation...') }}" aria-label="{{ _('Search') }}" />
+      <kbd class="fd-kbd">Esc</kbd>
+    </div>
+    <div id="fd-search-results" role="listbox" aria-label="{{ _('Search results') }}"></div>
+    <p id="fd-search-empty" class="fd-search-empty" hidden>{{ _('No results found.') }}</p>
+  </form>
+</dialog>

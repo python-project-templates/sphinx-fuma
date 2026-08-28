@@ -1,0 +1,97 @@
+{% import "partials/icons.html" as icons with context %}
+
+{%- macro tree(entries) %}
+<ul class="fd-tree">
+  {%- for entry in entries %}
+  <li class="fd-tree-item">
+    {%- if entry.children %}
+    <details class="fd-folder"{% if entry.active or entry.depth <= fuma_default_open_level %} open{% endif %}>
+      <summary class="fd-folder-summary">
+        <a class="fd-link{% if entry.current %} fd-current{% endif %}" href="{{ entry.url|e }}"{% if entry.external %} target="_blank" rel="noopener"{% endif %}>
+          {%- if entry.icon %}<span class="fd-link-icon">{{ icons.named(entry.icon) }}</span>{% endif %}
+          <span class="fd-link-text">{{ entry.title }}</span>
+        </a>
+        <span class="fd-folder-marker" aria-hidden="true">{{ icons.chevron_down() }}</span>
+      </summary>
+      {{ tree(entry.children) }}
+    </details>
+    {%- else %}
+    <a class="fd-link{% if entry.current %} fd-current{% endif %}" href="{{ entry.url|e }}"{% if entry.external %} target="_blank" rel="noopener"{% endif %}>
+      {%- if entry.icon %}<span class="fd-link-icon">{{ icons.named(entry.icon) }}</span>{% endif %}
+      <span class="fd-link-text">{{ entry.title }}</span>
+      {%- if entry.external %}{{ icons.external() }}{% endif %}
+    </a>
+    {%- endif %}
+  </li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+<aside id="fd-sidebar" aria-label="{{ _('Documentation') }}">
+  <div class="fd-sidebar-header">
+    <div class="fd-sidebar-brand-row">
+      {%- include "partials/brand.html" %}
+      <button type="button" class="fd-icon-button fd-sidebar-collapse" aria-label="{{ _('Collapse sidebar') }}">{{ icons.panel_left() }}</button>
+    </div>
+
+    {%- if fuma_search %}
+    <button type="button" class="fd-search-trigger" data-fd-search-open>
+      {{ icons.search() }}<span>{{ _('Search') }}</span><kbd class="fd-kbd">/</kbd>
+    </button>
+    {%- endif %}
+
+    {%- if fuma_tabs %}
+    <details class="fd-navigator">
+      <summary class="fd-navigator-trigger">
+        <span class="fd-navigator-icon">{{ icons.named(fuma_active_tab.icon or 'layers') }}</span>
+        <span class="fd-navigator-label">
+          <span class="fd-navigator-title">{{ fuma_active_tab.title }}</span>
+          {%- if fuma_active_tab.description %}<span class="fd-navigator-description">{{ fuma_active_tab.description }}</span>{% endif %}
+        </span>
+        {{ icons.chevrons_up_down() }}
+      </summary>
+      <div class="fd-navigator-menu">
+        {%- for tab in fuma_tabs %}
+        <a class="fd-navigator-option{% if tab.active %} fd-current{% endif %}" href="{{ tab.url|e }}">
+          <span class="fd-navigator-icon">{{ icons.named(tab.icon or 'layers') }}</span>
+          <span class="fd-navigator-label">
+            <span class="fd-navigator-title">{{ tab.title }}</span>
+            {%- if tab.description %}<span class="fd-navigator-description">{{ tab.description }}</span>{% endif %}
+          </span>
+        </a>
+        {%- endfor %}
+      </div>
+    </details>
+    {%- endif %}
+  </div>
+
+  <nav class="fd-sidebar-nav">
+    {%- for group in fuma_sidebar %}
+    <div class="fd-sidebar-group">
+      {%- if group.caption %}<p class="fd-sidebar-caption">{{ group.caption }}</p>{% endif %}
+      {{ tree(group.entries) }}
+    </div>
+    {%- else %}
+    <div class="fd-sidebar-group">
+      <ul class="fd-tree"><li class="fd-tree-item"><a class="fd-link" href="{{ pathto(root_doc)|e }}"><span class="fd-link-text">{{ docstitle|e }}</span></a></li></ul>
+    </div>
+    {%- endfor %}
+  </nav>
+
+  <div class="fd-sidebar-footer">
+    <div class="fd-toolbar">
+      {%- for link in fuma_nav_links %}
+      <a class="fd-toolbar-item" href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>
+      {%- endfor %}
+      {%- if fuma_github_url %}
+      <a class="fd-toolbar-item" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub">{{ icons.github() }}</a>
+      {%- endif %}
+      <div class="fd-theme-switch" role="group" aria-label="{{ _('Theme') }}">
+        <button type="button" class="fd-theme-option" data-fd-theme="light" aria-label="{{ _('Light theme') }}">{{ icons.sun() }}</button>
+        <button type="button" class="fd-theme-option" data-fd-theme="dark" aria-label="{{ _('Dark theme') }}">{{ icons.moon() }}</button>
+      </div>
+    </div>
+  </div>
+</aside>
+<button type="button" id="fd-sidebar-restore" class="fd-icon-button" aria-label="{{ _('Expand sidebar') }}">{{ icons.panel_left() }}</button>
+<div class="fd-sidebar-scrim" hidden></div>

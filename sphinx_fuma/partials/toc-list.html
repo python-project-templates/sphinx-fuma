@@ -1,0 +1,8 @@
+<ul class="fd-toc-list">
+  {%- for item in fuma_toc %}
+  <li class="fd-toc-item" data-depth="{{ item.depth }}">
+    <a href="{{ item.url|e }}">{{ item.title }}</a>
+  </li>
+  {%- endfor %}
+</ul>
+

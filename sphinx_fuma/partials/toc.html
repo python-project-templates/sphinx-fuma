@@ -1,0 +1,25 @@
+{% import "partials/icons.html" as icons with context %}
+<nav id="fd-toc" aria-label="{{ _('On this page') }}">
+  {%- if fuma_toc %}
+  <p class="fd-toc-title">{{ icons.list() }}{{ _('On this page') }}</p>
+  <div class="fd-toc-body">
+    {#- Both paths are generated at runtime; the thumb is clipped to the visible range. -#}
+    <svg class="fd-toc-rail" aria-hidden="true" preserveAspectRatio="none">
+      <path class="fd-toc-track" fill="none" />
+      <path class="fd-toc-thumb" fill="none" />
+    </svg>
+    {%- include "partials/toc-list.html" %}
+  </div>
+  {%- endif %}
+
+  {%- if fuma_edit_url or (show_source and has_source and sourcename) %}
+  <div class="fd-toc-actions">
+    {%- if fuma_edit_url %}
+    <a class="fd-toc-action" href="{{ fuma_edit_url }}" target="_blank" rel="noopener">{{ icons.pencil() }}<span>{{ _('Edit this page') }}</span></a>
+    {%- endif %}
+    {%- if show_source and has_source and sourcename %}
+    <a class="fd-toc-action" href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow">{{ icons.file() }}<span>{{ _('View source') }}</span></a>
+    {%- endif %}
+  </div>
+  {%- endif %}
+</nav>

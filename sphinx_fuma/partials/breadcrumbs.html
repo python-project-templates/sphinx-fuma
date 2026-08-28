@@ -1,0 +1,14 @@
+{% import "partials/icons.html" as icons with context %}
+{%- if fuma_breadcrumbs %}
+<nav class="fd-breadcrumbs" aria-label="{{ _('Breadcrumbs') }}">
+  <ol>
+    {%- for crumb in fuma_breadcrumbs %}
+    <li>
+      <a href="{{ crumb.url|e }}">{{ crumb.title }}</a>
+      {{ icons.chevron_right() }}
+    </li>
+    {%- endfor %}
+    <li aria-current="page">{{ title|striptags|e }}</li>
+  </ol>
+</nav>
+{%- endif %}

@@ -1,0 +1,63 @@
+{% extends "basic/layout.html" %}
+{% import "partials/icons.html" as icons with context %}
+
+{%- block extrahead %}
+    <script>
+      (function () {
+        var root = document.documentElement;
+        try {
+          var stored = localStorage.getItem("fuma-theme");
+          if (stored) {
+            root.classList.add(stored === "dark" ? "dark" : "light");
+            root.style.colorScheme = stored === "dark" ? "dark" : "light";
+          }
+          if (localStorage.getItem("fuma-sidebar") === "collapsed") root.dataset.sidebarCollapsed = "true";
+        } catch (e) {}
+      })();
+    </script>
+    {%- if fuma_css_overrides %}
+    <style>{{ fuma_css_overrides }}</style>
+    {%- endif %}
+{%- endblock %}
+
+{%- block body_tag %}
+<body class="fd-body" data-layout="{{ fuma_layout }}" data-toc-style="{{ fuma_toc_style }}" data-open-level="{{ fuma_default_open_level }}">
+{%- endblock %}
+
+{%- block relbar1 %}{% endblock %}
+{%- block relbar2 %}{% endblock %}
+
+{%- block content %}
+{%- if fuma_announcement %}
+<div id="fd-banner"><div class="fd-banner-inner">{{ fuma_announcement }}</div></div>
+{%- endif %}
+<div id="fd-layout">
+  {%- include "partials/subnav.html" %}
+  {%- include "partials/sidebar.html" %}
+
+  {%- if fuma_toc %}
+  <div id="fd-toc-popover">
+    <button type="button" class="fd-toc-trigger" aria-expanded="false" aria-controls="fd-toc-mobile">
+      {{ icons.list() }}<span>{{ _('On this page') }}</span>{{ icons.chevron_down() }}
+    </button>
+    <div id="fd-toc-mobile" hidden>{% include "partials/toc-list.html" %}</div>
+  </div>
+  {%- endif %}
+
+  <main id="fd-main">
+    <article class="fd-page">
+      {%- include "partials/breadcrumbs.html" %}
+      <div class="fd-prose">
+        {%- block body %}{% endblock %}
+      </div>
+      {%- include "partials/pagination.html" %}
+      {%- include "partials/footer.html" %}
+    </article>
+  </main>
+
+  {%- include "partials/toc.html" %}
+</div>
+{%- if fuma_search %}{% include "partials/search.html" %}{% endif %}
+{%- endblock %}
+
+{%- block footer %}{% endblock %}

@@ -1,0 +1,24 @@
+{% import "partials/icons.html" as icons with context %}
+{%- if prev or next %}
+<nav class="fd-pagination" aria-label="{{ _('Pagination') }}">
+  {%- if prev %}
+  <a class="fd-pagination-card fd-pagination-prev" href="{{ prev.link|e }}">
+    {{ icons.chevron_left() }}
+    <span class="fd-pagination-text">
+      <span class="fd-pagination-label">{{ _('Previous') }}</span>
+      <span class="fd-pagination-title">{{ prev.title|striptags|e }}</span>
+    </span>
+  </a>
+  {%- else %}<span></span>{% endif %}
+
+  {%- if next %}
+  <a class="fd-pagination-card fd-pagination-next" href="{{ next.link|e }}">
+    <span class="fd-pagination-text">
+      <span class="fd-pagination-label">{{ _('Next') }}</span>
+      <span class="fd-pagination-title">{{ next.title|striptags|e }}</span>
+    </span>
+    {{ icons.chevron_right() }}
+  </a>
+  {%- endif %}
+</nav>
+{%- endif %}

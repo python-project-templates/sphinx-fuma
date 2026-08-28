@@ -1,0 +1,5 @@
+<a class="fd-brand" href="{{ pathto(root_doc)|e }}">
+  {%- if logo_url %}<img class="fd-brand-logo" src="{{ logo_url|e }}" alt="{{ logo_alt|default(docstitle, true)|e }}" />{% endif %}
+  {#- ``html_title`` is documented as HTML, so it is rendered as authored. -#}
+  {%- if not fuma_sidebar_hide_name %}<span class="fd-brand-name">{{ shorttitle|default(docstitle, true)|safe }}</span>{% endif %}
+</a>

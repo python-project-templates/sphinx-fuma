@@ -150,6 +150,28 @@ section-order = [
 [tool.yardang]
 title = "sphinx-fuma"
 root = "README.md"
-pages = []
+pages = [
+    "docs/src/getting-started.md",
+    "docs/src/theme-options.md",
+    "docs/src/components.md",
+]
 use-autoapi = true
+autoapi-ignore = ["*/tests/*"]
 theme = "fuma"
+myst-enable-extensions = [
+    "amsmath",
+    "colon_fence",
+    "dollarmath",
+    "fieldlist",
+    "html_image",
+]
+
+[tool.yardang.html_theme_options]
+announcement = "This documentation is built with sphinx-fuma."
+color_preset = "amber"
+footer_text = "Built with sphinx-fuma."
+github_url = "https://github.com/python-project-templates/sphinx-fuma"
+nav_links = [
+    {title = "PyPI", url = "https://pypi.org/project/sphinx-fuma/"},
+]
+toc_style = "clerk"

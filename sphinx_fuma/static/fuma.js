@@ -163,7 +163,7 @@
       .map(function (item) {
         var href = item.querySelector("a").getAttribute("href") || "";
         var anchor = href.charAt(0) === "#" ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
-        var heading = anchor && (anchor.matches("h1, h2, h3, h4, h5, h6") ? anchor : anchor.querySelector("h1, h2, h3, h4, h5, h6"));
+        var heading = anchor && (anchor.matches("h1, h2, h3, h4, h5, h6") ? anchor : anchor.querySelector("h1, h2, h3, h4, h5, h6") || anchor);
         return heading ? { item: item, heading: heading } : null;
       })
       .filter(Boolean);

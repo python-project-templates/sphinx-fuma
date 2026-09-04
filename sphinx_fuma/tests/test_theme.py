@@ -208,6 +208,7 @@ class TestRenderedOutput:
     def test_toc_scroll_spy_observes_headings_across_the_viewport(self, built):
         script = (built / "_static" / "fuma.js").read_text()
         assert 'anchor.querySelector("h1, h2, h3, h4, h5, h6")' in script
+        assert 'anchor.querySelector("h1, h2, h3, h4, h5, h6") || anchor' in script
         assert "threshold: 0.9" in script
         assert "rootMargin:" not in script
 

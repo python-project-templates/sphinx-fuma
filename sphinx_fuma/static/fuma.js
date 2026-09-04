@@ -162,7 +162,8 @@
     var targets = tocItems
       .map(function (item) {
         var href = item.querySelector("a").getAttribute("href") || "";
-        var heading = href.charAt(0) === "#" ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        var anchor = href.charAt(0) === "#" ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        var heading = anchor && (anchor.matches("h1, h2, h3, h4, h5, h6") ? anchor : anchor.querySelector("h1, h2, h3, h4, h5, h6"));
         return heading ? { item: item, heading: heading } : null;
       })
       .filter(Boolean);
@@ -170,13 +171,12 @@
     // The thumb spans every heading currently on screen, not just the first.
     var mark = function (active) {
       tocItems.forEach(function (item) {
-        item.classList.remove("fd-active", "fd-visible");
+        item.classList.remove("fd-active");
       });
       if (!active.length) return;
       active.forEach(function (entry) {
-        entry.item.classList.add("fd-visible");
+        entry.item.classList.add("fd-active");
       });
-      active[0].item.classList.add("fd-active");
       if (rail) {
         var first = active[0].item.querySelector("a");
         var last = active[active.length - 1].item.querySelector("a");
@@ -199,15 +199,21 @@
           return visible.has(target.heading);
         });
         if (!active.length) {
-          // Nothing in the band: fall back to the last heading scrolled past.
-          var passed = targets.filter(function (target) {
-            return target.heading.getBoundingClientRect().top < 0;
+          var viewTop = entries[0] && entries[0].rootBounds ? entries[0].rootBounds.top : 0;
+          var fallback = null;
+          var fallbackDistance = Infinity;
+          targets.forEach(function (target) {
+            var distance = Math.abs(target.heading.getBoundingClientRect().top - viewTop);
+            if (distance < fallbackDistance) {
+              fallback = target;
+              fallbackDistance = distance;
+            }
           });
-          active = passed.length ? [passed[passed.length - 1]] : [targets[0]];
+          if (fallback) active = [fallback];
         }
         mark(active);
       },
-      { rootMargin: "-80px 0px -60% 0px", threshold: 0 }
+      { threshold: 0.9 }
     );
 
     targets.forEach(function (target) {

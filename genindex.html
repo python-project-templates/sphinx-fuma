@@ -446,17 +446,34 @@ window.runMermaid = runMermaid;</script>
         } catch (e) {}
       })();
     </script>
+    <style>:root {
+  --color-fd-primary: #cc8b00;
+}
+html.dark {
+  --color-fd-primary: #fff383;
+}
+@media (prefers-color-scheme: dark) {
+html:not(.light) {
+  --color-fd-primary: #fff383;
+}
+}
+</style>
   </head>
-<body class="fd-body" data-layout="docs" data-toc-style="normal" data-open-level="1">
+<body class="fd-body" data-layout="docs" data-toc-style="clerk" data-open-level="1">
+<div id="fd-banner"><div class="fd-banner-inner">This documentation is built with sphinx-fuma.</div></div>
 <div id="fd-layout"><header id="fd-subnav">
   <div class="fd-subnav-inner">
     <button type="button" class="fd-icon-button fd-sidebar-toggle" aria-controls="fd-sidebar" aria-expanded="false" aria-label="Toggle navigation">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
     </button><a class="fd-brand" href="index.html"><span class="fd-brand-name">sphinx-fuma <code style='font-size: var(--font-size--small--4);color: var(--sd-color-primary);'>v0.1.0</code></span>
 </a>
+    <nav class="fd-nav-links" aria-label="Site">
+      <a href="https://pypi.org/project/sphinx-fuma/" target="_blank" rel="noopener">PyPI</a>
+    </nav>
 
     <div class="fd-nav-actions">
       <button type="button" class="fd-icon-button" data-fd-search-open aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+      <a class="fd-icon-button" href="https://github.com/python-project-templates/sphinx-fuma" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
       <button type="button" class="fd-icon-button fd-theme-toggle" aria-label="Toggle theme">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon fd-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon fd-icon-dark"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9"/></svg>
       </button>
@@ -480,6 +497,21 @@ window.runMermaid = runMermaid;</script>
       
 <ul class="fd-tree">
   <li class="fd-tree-item">
+    <a class="fd-link" href="docs/src/getting-started.html"><span class="fd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
+      <span class="fd-link-text">How to configure sphinx-fuma</span>
+    </a>
+  </li>
+  <li class="fd-tree-item">
+    <a class="fd-link" href="docs/src/theme-options.html"><span class="fd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="fd-link-text">Theme option reference</span>
+    </a>
+  </li>
+  <li class="fd-tree-item">
+    <a class="fd-link" href="docs/src/components.html"><span class="fd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></svg></span>
+      <span class="fd-link-text">Content component showcase</span>
+    </a>
+  </li>
+  <li class="fd-tree-item">
     <details class="fd-folder" open>
       <summary class="fd-folder-summary">
         <a class="fd-link" href="autoapi/index.html">
@@ -489,11 +521,6 @@ window.runMermaid = runMermaid;</script>
       </summary>
       
 <ul class="fd-tree">
-  <li class="fd-tree-item">
-    <a class="fd-link" href="autoapi/test_theme/index.html">
-      <span class="fd-link-text">test_theme</span>
-    </a>
-  </li>
   <li class="fd-tree-item">
     <details class="fd-folder">
       <summary class="fd-folder-summary">
@@ -536,6 +563,8 @@ window.runMermaid = runMermaid;</script>
 
   <div class="fd-sidebar-footer">
     <div class="fd-toolbar">
+      <a class="fd-toolbar-item" href="https://pypi.org/project/sphinx-fuma/" target="_blank" rel="noopener">PyPI</a>
+      <a class="fd-toolbar-item" href="https://github.com/python-project-templates/sphinx-fuma" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
       <div class="fd-theme-switch" role="group" aria-label="Theme">
         <button type="button" class="fd-theme-option" data-fd-theme="light" aria-label="Light theme"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></button>
         <button type="button" class="fd-theme-option" data-fd-theme="dark" aria-label="Dark theme"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9"/></svg></button>
@@ -554,9 +583,6 @@ window.runMermaid = runMermaid;</script>
 
 <div class="genindex-jumpbox">
  <a href="#B"><strong>B</strong></a>
- | <a href="#C"><strong>C</strong></a>
- | <a href="#G"><strong>G</strong></a>
- | <a href="#I"><strong>I</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#S"><strong>S</strong></a>
@@ -568,37 +594,9 @@ window.runMermaid = runMermaid;</script>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/sphinx_fuma/_nav/index.html#sphinx_fuma._nav.breadcrumbs">breadcrumbs() (in module sphinx_fuma._nav)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/sphinx_fuma/_options/index.html#sphinx_fuma._options.build_context">build_context() (in module sphinx_fuma._options)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/test_theme/index.html#test_theme.built">built() (in module test_theme)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.built_system_fonts">built_system_fonts() (in module test_theme)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="C">C</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/test_theme/index.html#test_theme.CONF_PY">CONF_PY (in module test_theme)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="G">G</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/test_theme/index.html#test_theme.GUIDE_MD">GUIDE_MD (in module test_theme)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="I">I</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/test_theme/index.html#test_theme.INDEX_MD">INDEX_MD (in module test_theme)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -619,8 +617,6 @@ window.runMermaid = runMermaid;</script>
         <li><a href="autoapi/sphinx_fuma/_options/index.html#module-sphinx_fuma._options">sphinx_fuma._options</a>
 </li>
         <li><a href="autoapi/sphinx_fuma/_steps/index.html#module-sphinx_fuma._steps">sphinx_fuma._steps</a>
-</li>
-        <li><a href="autoapi/test_theme/index.html#module-test_theme">test_theme</a>
 </li>
       </ul></li>
   </ul></td>
@@ -688,111 +684,10 @@ window.runMermaid = runMermaid;</script>
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_active_page_is_marked_in_the_sidebar">test_active_page_is_marked_in_the_sidebar() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestColorPresets.test_amber_matches_the_fumadocs_pairing">test_amber_matches_the_fumadocs_pairing() (test_theme.TestColorPresets method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_bundled_fonts_are_shipped_and_linked">test_bundled_fonts_are_shipped_and_linked() (test_theme.TestRenderedOutput method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_css_overrides_render_both_modes">test_css_overrides_render_both_modes() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_dark_overrides_also_cover_system_preference">test_dark_overrides_also_cover_system_preference() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestColorPresets.test_default_is_the_neutral_greys">test_default_is_the_neutral_greys() (test_theme.TestColorPresets method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_defaults">test_defaults() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestFiles.test_directive_builds_a_tree">test_directive_builds_a_tree() (test_theme.TestFiles method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSteps.test_directive_wraps_content_in_a_steps_container">test_directive_wraps_content_in_a_steps_container() (test_theme.TestSteps method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSteps.test_each_heading_becomes_a_step">test_each_heading_becomes_a_step() (test_theme.TestSteps method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_edit_url_derived_from_github_url">test_edit_url_derived_from_github_url() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestColorPresets.test_explicit_variables_win_over_the_preset">test_explicit_variables_win_over_the_preset() (test_theme.TestColorPresets method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_flags_accept_theme_conf_strings">test_flags_accept_theme_conf_strings() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestFiles.test_folder_slash_is_stripped_from_the_label">test_folder_slash_is_stripped_from_the_label() (test_theme.TestFiles method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_font_licences_travel_with_the_fonts">test_font_licences_travel_with_the_fonts() (test_theme.TestRenderedOutput method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_invalid_choices_fall_back">test_invalid_choices_fall_back() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_layout_landmarks_are_present">test_layout_landmarks_are_present() (test_theme.TestRenderedOutput method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_nav_links_from_mappings">test_nav_links_from_mappings() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_nav_links_from_string">test_nav_links_from_string() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_navigation_lives_in_the_sidebar">test_navigation_lives_in_the_sidebar() (test_theme.TestRenderedOutput method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_navigator_lists_tabs_and_marks_the_active_one">test_navigator_lists_tabs_and_marks_the_active_one() (test_theme.TestRenderedOutput method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_no_edit_url_without_a_page">test_no_edit_url_without_a_page() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext.test_no_media_block_without_dark_overrides">test_no_media_block_without_dark_overrides() (test_theme.TestBuildContext method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_option_is_normalised">test_option_is_normalised() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_page_icon_metadata_renders_in_the_sidebar">test_page_icon_metadata_renders_in_the_sidebar() (test_theme.TestRenderedOutput method)</a>
+      <li><a href="autoapi/sphinx_fuma/index.html#sphinx_fuma.THEME_DIR">THEME_DIR (in module sphinx_fuma)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_page_title_is_excluded_from_the_toc">test_page_title_is_excluded_from_the_toc() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_page_toc_uses_fragment_anchors">test_page_toc_uses_fragment_anchors() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_pagination_links_neighbouring_pages">test_pagination_links_neighbouring_pages() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestColorPresets.test_preset_still_supplies_the_other_mode">test_preset_still_supplies_the_other_mode() (test_theme.TestColorPresets method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_search_uses_searchlite_rather_than_its_own_index">test_search_uses_searchlite_rather_than_its_own_index() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_sidebar_lists_pages_not_headings">test_sidebar_lists_pages_not_headings() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_sidebar_renders_the_toctree_caption_and_entries">test_sidebar_renders_the_toctree_caption_and_entries() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_static_assets_are_copied">test_static_assets_are_copied() (test_theme.TestRenderedOutput method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSteps.test_step_bodies_are_preserved">test_step_bodies_are_preserved() (test_theme.TestSteps method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_stylesheet_is_omitted">test_stylesheet_is_omitted() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li>
-    test_theme
-
-      <ul>
-        <li><a href="autoapi/test_theme/index.html#module-test_theme">module</a>
-</li>
-      </ul></li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_theme_options_reach_the_templates">test_theme_options_reach_the_templates() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts.test_theme_supplies_its_own_dialog">test_theme_supplies_its_own_dialog() (test_theme.TestSystemFonts method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_theme_switch_offers_both_modes">test_theme_switch_offers_both_modes() (test_theme.TestRenderedOutput method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput.test_toc_rail_is_an_svg_with_track_and_thumb">test_toc_rail_is_an_svg_with_track_and_thumb() (test_theme.TestRenderedOutput method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestFiles.test_trailing_slash_and_children_mark_folders">test_trailing_slash_and_children_mark_folders() (test_theme.TestFiles method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestColorPresets.test_unknown_preset_changes_nothing">test_unknown_preset_changes_nothing() (test_theme.TestColorPresets method)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestBuildContext">TestBuildContext (class in test_theme)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestColorPresets">TestColorPresets (class in test_theme)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestFiles">TestFiles (class in test_theme)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestRenderedOutput">TestRenderedOutput (class in test_theme)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSteps">TestSteps (class in test_theme)</a>
-</li>
-      <li><a href="autoapi/test_theme/index.html#test_theme.TestSystemFonts">TestSystemFonts (class in test_theme)</a>
-</li>
-      <li><a href="autoapi/sphinx_fuma/index.html#sphinx_fuma.THEME_DIR">THEME_DIR (in module sphinx_fuma)</a>
-</li>
       <li><a href="autoapi/sphinx_fuma/index.html#sphinx_fuma.THEME_NAME">THEME_NAME (in module sphinx_fuma)</a>
 </li>
   </ul></td>
@@ -801,13 +696,16 @@ window.runMermaid = runMermaid;</script>
 
 
       </div>
-<footer id="fd-footer">
+<footer id="fd-footer"><p class="fd-footer-text">Built with sphinx-fuma.</p>
   <p class="fd-footer-meta"><span>&#169; the sphinx-fuma authors</span><span>Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.</span>
   </p>
 </footer>
     </article>
   </main>
 <nav id="fd-toc" aria-label="On this page">
+  <div class="fd-toc-actions">
+    <a class="fd-toc-action" href="https://github.com/python-project-templates/sphinx-fuma/edit/HEAD/genindex.md" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="fd-icon "><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg><span>Edit this page</span></a>
+  </div>
 </nav>
 </div>
 <dialog id="fd-search-dialog" aria-label="Search">

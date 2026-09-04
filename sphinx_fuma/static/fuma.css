@@ -799,8 +799,7 @@ body[data-toc-style="clerk"] .fd-toc-item a {
   transition: color 0.15s, opacity 0.15s;
 }
 
-body[data-toc-style="clerk"] .fd-toc-item.fd-active a,
-body[data-toc-style="clerk"] .fd-toc-item.fd-visible a {
+body[data-toc-style="clerk"] .fd-toc-item.fd-active a {
   opacity: 1;
 }
 
@@ -1142,6 +1141,11 @@ body[data-toc-style="clerk"] .fd-toc-item.fd-visible a {
 .fd-prose li {
   margin: 0.5rem 0;
   line-height: 1.75;
+}
+
+.fd-prose ul.simple > li > p,
+.fd-prose ol.simple > li > p {
+  margin: 0;
 }
 
 .fd-prose a {

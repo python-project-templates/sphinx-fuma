@@ -205,6 +205,21 @@ class TestRenderedOutput:
         assert 'class="fd-toc-track"' in html
         assert 'class="fd-toc-thumb"' in html
 
+    def test_toc_scroll_spy_observes_headings_across_the_viewport(self, built):
+        script = (built / "_static" / "fuma.js").read_text()
+        assert 'anchor.querySelector("h1, h2, h3, h4, h5, h6")' in script
+        assert "threshold: 0.9" in script
+        assert "rootMargin:" not in script
+
+    def test_toc_scroll_spy_marks_every_visible_item_active(self, built):
+        script = (built / "_static" / "fuma.js").read_text()
+        assert 'entry.item.classList.add("fd-active")' in script
+        assert 'active[0].item.classList.add("fd-active")' not in script
+
+    def test_tight_list_paragraphs_do_not_expand_item_spacing(self, built):
+        stylesheet = (built / "_static" / "fuma.css").read_text()
+        assert (".fd-prose ul.simple > li > p,\n.fd-prose ol.simple > li > p {\n  margin: 0;\n}") in stylesheet
+
 
 class TestSteps:
     def test_directive_wraps_content_in_a_steps_container(self, built):

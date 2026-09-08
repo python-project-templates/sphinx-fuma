@@ -223,6 +223,12 @@ class TestRenderedOutput:
         # dialog has to close on it explicitly.
         assert 'event.key === "Escape"' in script
 
+    def test_click_away_ignores_presses_that_began_inside_the_panel(self, built):
+        script = (built / "_static" / "fuma.js").read_text()
+        # Releasing outside the panel targets the dialog, so selecting a query
+        # by dragging past the field's edge would otherwise dismiss it.
+        assert "pressedBackdrop && event.target === dialog" in script
+
     def test_tight_list_paragraphs_do_not_expand_item_spacing(self, built):
         stylesheet = (built / "_static" / "fuma.css").read_text()
         assert (".fd-prose ul.simple > li > p,\n.fd-prose ol.simple > li > p {\n  margin: 0;\n}") in stylesheet

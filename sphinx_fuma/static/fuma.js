@@ -306,6 +306,11 @@
         event.preventDefault();
         window.location.href = active.href;
       }
+    } else if (event.key === "Escape") {
+      // `<input type=search>` swallows the first Escape to clear itself, which
+      // would leave the dialog needing two presses despite the `Esc` hint.
+      event.preventDefault();
+      dialog.close();
     }
   });
 

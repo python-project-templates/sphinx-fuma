@@ -217,6 +217,12 @@ class TestRenderedOutput:
         assert 'entry.item.classList.add("fd-active")' in script
         assert 'active[0].item.classList.add("fd-active")' not in script
 
+    def test_escape_closes_the_search_dialog_on_the_first_press(self, built):
+        script = (built / "_static" / "fuma.js").read_text()
+        # `<input type=search>` eats the first Escape to clear itself, so the
+        # dialog has to close on it explicitly.
+        assert 'event.key === "Escape"' in script
+
     def test_tight_list_paragraphs_do_not_expand_item_spacing(self, built):
         stylesheet = (built / "_static" / "fuma.css").read_text()
         assert (".fd-prose ul.simple > li > p,\n.fd-prose ol.simple > li > p {\n  margin: 0;\n}") in stylesheet

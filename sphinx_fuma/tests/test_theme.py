@@ -127,15 +127,18 @@ class TestBuildContext:
                 "theme_dark_css_variables": {"--color-fd-primary": "blue"},
             }
         )["fuma_css_overrides"]
+        assert isinstance(css, str)
         assert ":root {\n  --color-fd-primary: red;\n}\n" in css
         assert "html.dark {\n  --color-fd-primary: blue;\n}\n" in css
 
     def test_dark_overrides_also_cover_system_preference(self):
         css = build_context({"theme_dark_css_variables": {"color-fd-primary": "blue"}})["fuma_css_overrides"]
+        assert isinstance(css, str)
         assert "@media (prefers-color-scheme: dark) {\nhtml:not(.light) {" in css
 
     def test_no_media_block_without_dark_overrides(self):
         css = build_context({"theme_light_css_variables": {"color-fd-primary": "red"}})["fuma_css_overrides"]
+        assert isinstance(css, str)
         assert "prefers-color-scheme" not in css
 
     def test_edit_url_derived_from_github_url(self):
@@ -262,6 +265,7 @@ class TestFiles:
 class TestColorPresets:
     def test_amber_matches_the_fumadocs_pairing(self):
         css = build_context({"theme_color_preset": "amber"})["fuma_css_overrides"]
+        assert isinstance(css, str)
         assert "--color-fd-primary: #cc8b00;" in css
         assert "--color-fd-primary: #fff383;" in css
 
@@ -278,6 +282,7 @@ class TestColorPresets:
                 "theme_dark_css_variables": {"color-fd-primary": "#ff0000"},
             }
         )["fuma_css_overrides"]
+        assert isinstance(css, str)
         assert "--color-fd-primary: #ff0000;" in css
         assert "#fff383" not in css
 
@@ -288,6 +293,7 @@ class TestColorPresets:
                 "theme_dark_css_variables": {"color-fd-primary": "#ff0000"},
             }
         )["fuma_css_overrides"]
+        assert isinstance(css, str)
         assert "--color-fd-primary: #cc8b00;" in css
 
 

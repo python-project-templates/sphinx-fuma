@@ -7,8 +7,25 @@ normalised shape, so everything is coerced here rather than in Jinja.
 """
 
 from html import escape
+from typing import NotRequired, TypedDict
 
 __all__ = ("build_context",)
+
+
+class _NavLink(TypedDict):
+    title: str
+    url: str
+    external: NotRequired[bool]
+
+
+class _SidebarTab(TypedDict):
+    title: str
+    url: str
+    description: str
+    icon: str
+    match: str
+    active: bool
+
 
 _TRUTHY = {"1", "on", "true", "yes"}
 _FALSY = {"0", "off", "false", "no", ""}
@@ -58,7 +75,7 @@ def _choice(value, allowed: tuple[str, ...], default: str) -> str:
     return text if text in allowed else default
 
 
-def _links(value) -> list[dict[str, str]]:
+def _links(value) -> list[_NavLink]:
     """Coerce ``nav_links`` into a list of ``{title, url, external}`` mappings.
 
     Accepts a list of mappings, a list of ``(title, url)`` pairs, or a
@@ -66,14 +83,13 @@ def _links(value) -> list[dict[str, str]]:
     """
     if not value:
         return []
+    entries: list[_NavLink] = []
     if isinstance(value, str):
-        entries = []
         for chunk in value.split(","):
             title, _, url = chunk.partition("|")
             if title.strip() and url.strip():
                 entries.append({"title": title.strip(), "url": url.strip()})
     else:
-        entries = []
         for item in value:
             if isinstance(item, dict):
                 title, url = _text(item.get("title") or item.get("name")), _text(item.get("url") or item.get("href"))
@@ -88,7 +104,7 @@ def _links(value) -> list[dict[str, str]]:
     return entries
 
 
-def _tabs(value, pagename: str) -> list[dict]:
+def _tabs(value, pagename: str) -> list[_SidebarTab]:
     """Coerce ``sidebar_tabs`` into navigator entries and mark the active one.
 
     Accepts a list of mappings with ``title``, ``url`` and optional ``description``
@@ -97,7 +113,7 @@ def _tabs(value, pagename: str) -> list[dict]:
     """
     if not value or isinstance(value, str):
         return []
-    tabs = []
+    tabs: list[_SidebarTab] = []
     for item in value:
         if not isinstance(item, dict):
             continue

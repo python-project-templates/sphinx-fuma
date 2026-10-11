@@ -25,16 +25,16 @@ lint-py:  ## lint python with ruff
 	python -m ruff format --check sphinx_fuma
 
 lint-docs:  ## lint docs with mdformat and codespell
-	python -m mdformat --check README.md $(wildcard docs/src) 
-	python -m codespell_lib README.md $(wildcard docs/src) 
+	python -m mdformat --check README.md $(wildcard docs/src)
+	python -m codespell_lib README.md $(wildcard docs/src)
 
 fix-py:  ## autoformat python code with ruff
 	python -m ruff check --fix sphinx_fuma
 	python -m ruff format sphinx_fuma
 
 fix-docs:  ## autoformat docs with mdformat and codespell
-	python -m mdformat README.md $(wildcard docs/src) 
-	python -m codespell_lib --write README.md $(wildcard docs/src) 
+	python -m mdformat README.md $(wildcard docs/src)
+	python -m codespell_lib --write README.md $(wildcard docs/src)
 
 lint: lint-py lint-docs  ## run all linters
 lints: lint

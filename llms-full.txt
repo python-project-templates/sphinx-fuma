@@ -249,6 +249,20 @@ Python, Anaconda, and JFrog logos are bundled from
 [Simple Icons](https://github.com/simple-icons/simple-icons) (CC0). All navigation
 icons are inline SVGs that inherit the theme’s text color.
 
+## LLM documentation menu
+
+When Yardang’s llms output is enabled, a robot button appears in the sidebar
+toolbar and header. Its menu links to `llms.txt` and, when `full-build` is enabled,
+`llms-full.txt`. Links work from nested documentation pages.
+
+The menu appears automatically when the `yardang.sphinx.llms` extension is loaded.
+For projects built with Yardang, this is controlled by:
+
+```toml
+[tool.yardang.llms]
+enabled = true
+```
+
 ## Section navigator
 
 Each `sidebar_tabs` mapping accepts these fields:

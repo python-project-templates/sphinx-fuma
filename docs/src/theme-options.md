@@ -76,6 +76,35 @@ Two-item `(title, url)` sequences are also accepted. Theme configuration strings
 
 External links open in a new browser tab and receive the appropriate `rel` attributes.
 
+Recognized destinations render as icon buttons in both the header and sidebar
+toolbar. The original title supplies the tooltip and accessible name. Other links
+retain their text.
+
+The sidebar toolbar wraps when its links exceed the available width.
+
+| Destination   | URL recognition                                                                                                                                    | Icon     |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| PyPI          | `pypi.org`, `pypi.python.org`                                                                                                                      | Python   |
+| Conda         | `anaconda.org`, `anaconda.com`                                                                                                                     | Anaconda |
+| Artifactory   | `jfrog.io`, `jfrog.com`, a host starting with `artifactory.`, or an `artifactory` path segment                                                     | JFrog    |
+| Documentation | `readthedocs.io`, `readthedocs.org`, a host starting with `docs.`, or a `docs`, `documentation`, `docs.html`, or `documentation.html` path segment | Book     |
+| LLMs files    | A filename of `llms.txt` or `llms-full.txt`                                                                                                        | Sparkles |
+| GitHub        | `github.com`                                                                                                                                       | GitHub   |
+| Home          | The label `Home`                                                                                                                                   | House    |
+
+Domain matches include subdomains. Hosts, paths, and labels are matched
+case-insensitively; queries and fragments do not affect recognition. File and URL
+matches take precedence over labels.
+
+For private sites and other URLs, exact labels also select icons: `PyPI` or
+`Python`, `Conda` or `Anaconda`, `Artifactory`, `Docs` or `Documentation`, `GitHub`,
+`Home`, `llms.txt`, and `llms-full.txt`. Recognition applies to HTTP(S),
+protocol-relative, and relative links; other URL schemes retain their text.
+
+Python, Anaconda, and JFrog logos are bundled from
+[Simple Icons](https://github.com/simple-icons/simple-icons) (CC0). All navigation
+icons are inline SVGs that inherit the theme's text color.
+
 ## Section navigator
 
 Each `sidebar_tabs` mapping accepts these fields:

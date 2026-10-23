@@ -8,6 +8,7 @@ normalised shape, so everything is coerced here rather than in Jinja.
 
 from html import escape
 from typing import NotRequired, TypedDict
+from urllib.parse import urlsplit
 
 __all__ = ("build_context",)
 
@@ -16,6 +17,7 @@ class _NavLink(TypedDict):
     title: str
     url: str
     external: NotRequired[bool]
+    icon: NotRequired[str]
 
 
 class _SidebarTab(TypedDict):
@@ -33,6 +35,31 @@ _FALSY = {"0", "off", "false", "no", ""}
 _LAYOUTS = ("docs", "notebook")
 _TOC_STYLES = ("normal", "clerk")
 _FONTS = ("bundled", "system")
+
+_LINK_DOMAINS = {
+    "pypi.org": "python",
+    "pypi.python.org": "python",
+    "anaconda.org": "conda",
+    "anaconda.com": "conda",
+    "jfrog.io": "artifactory",
+    "jfrog.com": "artifactory",
+    "readthedocs.io": "book",
+    "readthedocs.org": "book",
+    "github.com": "github",
+}
+_LINK_LABELS = {
+    "pypi": "python",
+    "python": "python",
+    "conda": "conda",
+    "anaconda": "conda",
+    "artifactory": "artifactory",
+    "docs": "book",
+    "documentation": "book",
+    "home": "house",
+    "github": "github",
+    "llms.txt": "sparkles",
+    "llms-full.txt": "sparkles",
+}
 
 # Each preset recolours ``--color-fd-primary`` only; the greys stay as they are.
 # ``amber`` is the pairing fumadocs.dev itself uses.
@@ -75,8 +102,30 @@ def _choice(value, allowed: tuple[str, ...], default: str) -> str:
     return text if text in allowed else default
 
 
+def _link_icon(title: str, url: str) -> str:
+    """Recognize common navigation destinations without changing their labels."""
+    try:
+        parsed = urlsplit(url)
+    except ValueError:
+        return ""
+    if parsed.scheme not in ("", "http", "https"):
+        return ""
+    parts = parsed.path.lower().strip("/").split("/")
+    if parts[-1] in ("llms.txt", "llms-full.txt"):
+        return "sparkles"
+    host = parsed.hostname or ""
+    for domain, icon in _LINK_DOMAINS.items():
+        if host == domain or host.endswith(f".{domain}"):
+            return icon
+    if host.startswith("artifactory.") or "artifactory" in parts:
+        return "artifactory"
+    if host.startswith("docs.") or any(part in ("docs", "documentation", "docs.html", "documentation.html") for part in parts):
+        return "book"
+    return _LINK_LABELS.get(title.lower(), "")
+
+
 def _links(value) -> list[_NavLink]:
-    """Coerce ``nav_links`` into a list of ``{title, url, external}`` mappings.
+    """Coerce ``nav_links`` into mappings with optional recognized icons.
 
     Accepts a list of mappings, a list of ``(title, url)`` pairs, or a
     ``"Title|url, Title|url"`` string for people configuring from TOML.
@@ -101,6 +150,9 @@ def _links(value) -> list[_NavLink]:
                 entries.append({"title": title, "url": url})
     for entry in entries:
         entry["external"] = entry["url"].startswith(("http://", "https://", "//"))
+        icon = _link_icon(entry["title"], entry["url"])
+        if icon:
+            entry["icon"] = icon
     return entries
 
 

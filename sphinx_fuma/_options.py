@@ -247,7 +247,7 @@ def build_context(context: dict) -> dict[str, object]:
         "fuma_fonts": _choice(context.get("theme_fonts"), _FONTS, "bundled"),
         "fuma_search": _flag(context.get("theme_search"), True),
         "fuma_sidebar_hide_name": _flag(context.get("theme_sidebar_hide_name")),
-        "fuma_default_open_level": _integer(context.get("theme_default_open_level"), 1),
+        "fuma_default_open_level": _integer(context.get("theme_default_open_level"), 0),
         "fuma_nav_links": _links(context.get("theme_nav_links")),
         "fuma_tabs": tabs,
         "fuma_active_tab": next((tab for tab in tabs if tab["active"]), {"title": "", "description": "", "icon": ""}),

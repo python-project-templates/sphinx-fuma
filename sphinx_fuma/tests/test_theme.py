@@ -109,6 +109,7 @@ class TestBuildContext:
         assert context["fuma_toc_style"] == "normal"
         assert context["fuma_search"] is True
         assert context["fuma_nav_links"] == []
+        assert context["fuma_default_open_level"] == 0
 
     def test_invalid_choices_fall_back(self):
         context = build_context({"theme_layout": "spaceship", "theme_toc_style": "fancy"})

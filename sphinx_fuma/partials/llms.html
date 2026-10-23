@@ -1,0 +1,13 @@
+{% import "partials/icons.html" as icons with context %}
+{%- if fuma_llms_links %}
+<details class="fd-llms">
+  <summary class="fd-icon-button" aria-label="{{ _('LLM documentation') }}" title="{{ _('LLM documentation') }}">
+    {{ icons.named("bot", "fd-icon-bot") }}
+  </summary>
+  <nav class="fd-llms-menu" aria-label="{{ _('LLM documentation') }}">
+    {%- for link in fuma_llms_links %}
+    <a href="{{ link.url|e }}">{{ link.title }}</a>
+    {%- endfor %}
+  </nav>
+</details>
+{%- endif %}

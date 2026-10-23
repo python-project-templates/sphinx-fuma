@@ -86,6 +86,7 @@
       {%- if fuma_github_url %}
       <a class="fd-toolbar-item" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub">{{ icons.github() }}</a>
       {%- endif %}
+      {%- include "partials/llms.html" %}
       <div class="fd-theme-switch" role="group" aria-label="{{ _('Theme') }}">
         <button type="button" class="fd-theme-option" data-fd-theme="light" aria-label="{{ _('Light theme') }}">{{ icons.sun() }}</button>
         <button type="button" class="fd-theme-option" data-fd-theme="dark" aria-label="{{ _('Dark theme') }}">{{ icons.moon() }}</button>

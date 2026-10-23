@@ -45,6 +45,12 @@ def _on_page_context(app, pagename, templatename, context, doctree) -> None:
     context["fuma_sidebar"] = sidebar_tree(app, pagename)
     context["fuma_toc"] = page_toc(app, pagename)
     context["fuma_breadcrumbs"] = breadcrumbs(context)
+    context["fuma_llms_links"] = []
+    if "yardang.sphinx.llms" in app.extensions:
+        filenames = ["llms.txt"]
+        if app.config.yardang_llms_full_build:
+            filenames.append("llms-full.txt")
+        context["fuma_llms_links"] = [{"title": filename, "url": context["pathto"](filename, resource=True)} for filename in filenames]
 
 
 def setup(app) -> dict[str, object]:

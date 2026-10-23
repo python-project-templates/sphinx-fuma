@@ -217,6 +217,9 @@ class TestBuildContext:
 
 
 class TestRenderedOutput:
+    def test_llms_menu_is_absent_without_llms_output(self, built):
+        assert 'class="fd-llms"' not in (built / "index.html").read_text()
+
     @pytest.mark.parametrize(
         ("region", "closing_tag", "links_container"),
         [("fd-subnav", "header", "fd-nav-links"), ("fd-sidebar", "aside", "fd-toolbar")],

@@ -23,6 +23,7 @@
       {%- if fuma_github_url %}
       <a class="fd-icon-button" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub">{{ icons.github() }}</a>
       {%- endif %}
+      {%- include "partials/llms.html" %}
       <button type="button" class="fd-icon-button fd-theme-toggle" aria-label="{{ _('Toggle theme') }}">
         {{ icons.sun("fd-icon-light") }}{{ icons.moon("fd-icon-dark") }}
       </button>

@@ -2,7 +2,7 @@
 {%- if prev or next %}
 <nav class="fd-pagination" aria-label="{{ _('Pagination') }}">
   {%- if prev %}
-  <a class="fd-pagination-card fd-pagination-prev" href="{{ prev.link|e }}">
+  <a class="fd-pagination-card fd-pagination-prev" href="{{ prev.link|e }}" title="{{ _('Previous') }}: {{ prev.title|striptags|e }}">
     {{ icons.chevron_left() }}
     <span class="fd-pagination-text">
       <span class="fd-pagination-label">{{ _('Previous') }}</span>
@@ -12,7 +12,7 @@
   {%- else %}<span></span>{% endif %}
 
   {%- if next %}
-  <a class="fd-pagination-card fd-pagination-next" href="{{ next.link|e }}">
+  <a class="fd-pagination-card fd-pagination-next" href="{{ next.link|e }}" title="{{ _('Next') }}: {{ next.title|striptags|e }}">
     <span class="fd-pagination-text">
       <span class="fd-pagination-label">{{ _('Next') }}</span>
       <span class="fd-pagination-title">{{ next.title|striptags|e }}</span>

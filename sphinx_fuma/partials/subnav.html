@@ -2,7 +2,7 @@
 {#- Top bar: mobile only in the docs layout, always present in the notebook layout. -#}
 <header id="fd-subnav">
   <div class="fd-subnav-inner">
-    <button type="button" class="fd-icon-button fd-sidebar-toggle" aria-controls="fd-sidebar" aria-expanded="false" aria-label="{{ _('Toggle navigation') }}">
+    <button type="button" class="fd-icon-button fd-sidebar-toggle" aria-controls="fd-sidebar" aria-expanded="false" aria-label="{{ _('Toggle navigation') }}" title="{{ _('Toggle navigation') }}">
       {{ icons.menu() }}
     </button>
 
@@ -11,20 +11,20 @@
     {%- if fuma_nav_links %}
     <nav class="fd-nav-links" aria-label="{{ _('Site') }}">
       {%- for link in fuma_nav_links %}
-      <a{% if link.icon %} class="fd-icon-button"{% endif %} href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}{% if link.icon %} aria-label="{{ link.title|e }}" title="{{ link.title|e }}"{% endif %}>{% if link.icon %}{{ icons.named(link.icon, "fd-icon-" ~ link.icon) }}{% else %}{{ link.title }}{% endif %}</a>
+      <a{% if link.icon %} class="fd-icon-button"{% endif %} href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %} title="{{ link.title|e }}"{% if link.icon %} aria-label="{{ link.title|e }}"{% endif %}>{% if link.icon %}{{ icons.named(link.icon, "fd-icon-" ~ link.icon) }}{% else %}{{ link.title }}{% endif %}</a>
       {%- endfor %}
     </nav>
     {%- endif %}
 
     <div class="fd-nav-actions">
       {%- if fuma_search %}
-      <button type="button" class="fd-icon-button" data-fd-search-open aria-label="{{ _('Search') }}">{{ icons.search() }}</button>
+      <button type="button" class="fd-icon-button" data-fd-search-open aria-label="{{ _('Search') }}" title="{{ _('Search') }}">{{ icons.search() }}</button>
       {%- endif %}
       {%- if fuma_github_url %}
-      <a class="fd-icon-button" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub">{{ icons.github() }}</a>
+      <a class="fd-icon-button" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">{{ icons.github() }}</a>
       {%- endif %}
       {%- include "partials/llms.html" %}
-      <button type="button" class="fd-icon-button fd-theme-toggle" aria-label="{{ _('Toggle theme') }}">
+      <button type="button" class="fd-icon-button fd-theme-toggle" aria-label="{{ _('Toggle theme') }}" title="{{ _('Toggle theme') }}">
         {{ icons.sun("fd-icon-light") }}{{ icons.moon("fd-icon-dark") }}
       </button>
     </div>

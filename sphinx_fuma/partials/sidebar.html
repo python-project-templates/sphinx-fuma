@@ -6,7 +6,7 @@
   <li class="fd-tree-item">
     {%- if entry.children %}
     <details class="fd-folder"{% if entry.active or entry.depth <= fuma_default_open_level %} open{% endif %}>
-      <summary class="fd-folder-summary">
+      <summary class="fd-folder-summary" title="{{ _('Toggle section') }}: {{ entry.title|e }}">
         <a class="fd-link{% if entry.current %} fd-current{% endif %}" href="{{ entry.url|e }}"{% if entry.external %} target="_blank" rel="noopener"{% endif %}>
           {%- if entry.icon %}<span class="fd-link-icon">{{ icons.named(entry.icon) }}</span>{% endif %}
           <span class="fd-link-text">{{ entry.title }}</span>
@@ -31,18 +31,18 @@
   <div class="fd-sidebar-header">
     <div class="fd-sidebar-brand-row">
       {%- include "partials/brand.html" %}
-      <button type="button" class="fd-icon-button fd-sidebar-collapse" aria-label="{{ _('Collapse sidebar') }}">{{ icons.panel_left() }}</button>
+      <button type="button" class="fd-icon-button fd-sidebar-collapse" aria-label="{{ _('Collapse sidebar') }}" title="{{ _('Collapse sidebar') }}">{{ icons.panel_left() }}</button>
     </div>
 
     {%- if fuma_search %}
-    <button type="button" class="fd-search-trigger" data-fd-search-open>
+    <button type="button" class="fd-search-trigger" data-fd-search-open title="{{ _('Search') }}">
       {{ icons.search() }}<span>{{ _('Search') }}</span><kbd class="fd-kbd">/</kbd>
     </button>
     {%- endif %}
 
     {%- if fuma_tabs %}
     <details class="fd-navigator">
-      <summary class="fd-navigator-trigger">
+      <summary class="fd-navigator-trigger" title="{{ _('Switch section') }}">
         <span class="fd-navigator-icon">{{ icons.named(fuma_active_tab.icon or 'layers') }}</span>
         <span class="fd-navigator-label">
           <span class="fd-navigator-title">{{ fuma_active_tab.title }}</span>
@@ -52,7 +52,7 @@
       </summary>
       <div class="fd-navigator-menu">
         {%- for tab in fuma_tabs %}
-        <a class="fd-navigator-option{% if tab.active %} fd-current{% endif %}" href="{{ tab.url|e }}">
+        <a class="fd-navigator-option{% if tab.active %} fd-current{% endif %}" href="{{ tab.url|e }}" title="{{ tab.title|e }}">
           <span class="fd-navigator-icon">{{ icons.named(tab.icon or 'layers') }}</span>
           <span class="fd-navigator-label">
             <span class="fd-navigator-title">{{ tab.title }}</span>
@@ -81,18 +81,18 @@
   <div class="fd-sidebar-footer">
     <div class="fd-toolbar">
       {%- for link in fuma_nav_links %}
-      <a class="fd-toolbar-item" href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}{% if link.icon %} aria-label="{{ link.title|e }}" title="{{ link.title|e }}"{% endif %}>{% if link.icon %}{{ icons.named(link.icon, "fd-icon-" ~ link.icon) }}{% else %}{{ link.title }}{% endif %}</a>
+      <a class="fd-toolbar-item" href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %} title="{{ link.title|e }}"{% if link.icon %} aria-label="{{ link.title|e }}"{% endif %}>{% if link.icon %}{{ icons.named(link.icon, "fd-icon-" ~ link.icon) }}{% else %}{{ link.title }}{% endif %}</a>
       {%- endfor %}
       {%- if fuma_github_url %}
-      <a class="fd-toolbar-item" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub">{{ icons.github() }}</a>
+      <a class="fd-toolbar-item" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">{{ icons.github() }}</a>
       {%- endif %}
       {%- include "partials/llms.html" %}
       <div class="fd-theme-switch" role="group" aria-label="{{ _('Theme') }}">
-        <button type="button" class="fd-theme-option" data-fd-theme="light" aria-label="{{ _('Light theme') }}">{{ icons.sun() }}</button>
-        <button type="button" class="fd-theme-option" data-fd-theme="dark" aria-label="{{ _('Dark theme') }}">{{ icons.moon() }}</button>
+        <button type="button" class="fd-theme-option" data-fd-theme="light" aria-label="{{ _('Light theme') }}" title="{{ _('Light theme') }}">{{ icons.sun() }}</button>
+        <button type="button" class="fd-theme-option" data-fd-theme="dark" aria-label="{{ _('Dark theme') }}" title="{{ _('Dark theme') }}">{{ icons.moon() }}</button>
       </div>
     </div>
   </div>
 </aside>
-<button type="button" id="fd-sidebar-restore" class="fd-icon-button" aria-label="{{ _('Expand sidebar') }}">{{ icons.panel_left() }}</button>
+<button type="button" id="fd-sidebar-restore" class="fd-icon-button" aria-label="{{ _('Expand sidebar') }}" title="{{ _('Expand sidebar') }}">{{ icons.panel_left() }}</button>
 <div class="fd-sidebar-scrim" hidden></div>

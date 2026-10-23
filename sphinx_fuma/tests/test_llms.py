@@ -32,7 +32,7 @@ def test_llms_menu_links_to_generated_files(built_llms, page, region):
     assert 'aria-label="LLM documentation"' in menu.group(1)
     assert 'title="LLM documentation"' in menu.group(1)
     assert "fd-icon-bot" in menu.group(1)
-    links = re.findall(r'<a href="([^"]+)">([^<]+)</a>', menu.group(1))
+    links = re.findall(r'<a href="([^"]+)"[^>]*>([^<]+)</a>', menu.group(1))
     filenames = ["llms.txt", "llms-full.txt"] if full_build else ["llms.txt"]
     assert [label for _, label in links] == filenames
     for href, label in links:

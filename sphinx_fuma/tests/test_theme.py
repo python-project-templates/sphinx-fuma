@@ -253,7 +253,7 @@ class TestRenderedOutput:
 
     def test_unknown_navigation_link_retains_text(self, built):
         html = (built / "guide.html").read_text()
-        assert html.count('href="https://example.com/blog" target="_blank" rel="noopener">Blog</a>') == 2
+        assert html.count('href="https://example.com/blog" target="_blank" rel="noopener" title="Blog">Blog</a>') == 2
 
     def test_static_assets_are_copied(self, built):
         static = built / "_static"

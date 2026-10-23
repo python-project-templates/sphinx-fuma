@@ -6,7 +6,7 @@
   </summary>
   <nav class="fd-llms-menu" aria-label="{{ _('LLM documentation') }}">
     {%- for link in fuma_llms_links %}
-    <a href="{{ link.url|e }}">{{ link.title }}</a>
+    <a href="{{ link.url|e }}" title="{{ link.title|e }}">{{ link.title }}</a>
     {%- endfor %}
   </nav>
 </details>

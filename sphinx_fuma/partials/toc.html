@@ -15,10 +15,10 @@
   {%- if fuma_edit_url or (show_source and has_source and sourcename) %}
   <div class="fd-toc-actions">
     {%- if fuma_edit_url %}
-    <a class="fd-toc-action" href="{{ fuma_edit_url }}" target="_blank" rel="noopener">{{ icons.pencil() }}<span>{{ _('Edit this page') }}</span></a>
+    <a class="fd-toc-action" href="{{ fuma_edit_url }}" target="_blank" rel="noopener" title="{{ _('Edit this page') }}">{{ icons.pencil() }}<span>{{ _('Edit this page') }}</span></a>
     {%- endif %}
     {%- if show_source and has_source and sourcename %}
-    <a class="fd-toc-action" href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow">{{ icons.file() }}<span>{{ _('View source') }}</span></a>
+    <a class="fd-toc-action" href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow" title="{{ _('View source') }}">{{ icons.file() }}<span>{{ _('View source') }}</span></a>
     {%- endif %}
   </div>
   {%- endif %}

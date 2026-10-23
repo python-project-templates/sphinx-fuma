@@ -37,7 +37,7 @@
 
   {%- if fuma_toc %}
   <div id="fd-toc-popover">
-    <button type="button" class="fd-toc-trigger" aria-expanded="false" aria-controls="fd-toc-mobile">
+    <button type="button" class="fd-toc-trigger" aria-expanded="false" aria-controls="fd-toc-mobile" title="{{ _('On this page') }}">
       {{ icons.list() }}<span>{{ _('On this page') }}</span>{{ icons.chevron_down() }}
     </button>
     <div id="fd-toc-mobile" hidden>{% include "partials/toc-list.html" %}</div>

@@ -1,0 +1,20 @@
+# sphinx-fuma
+
+> Fumadocs theme for sphinx
+
+## Pages
+
+- [sphinx-fuma](index.html.md): A responsive Sphinx theme inspired by Fumadocs.
+- [How to configure sphinx-fuma](docs/src/getting-started.html.md): This guide shows how to install sphinx-fuma, select it in Sphinx, and apply theme options.
+- [Theme option reference](docs/src/theme-options.html.md): Theme options are entries in the Sphinx html_theme_options dictionary.
+- [Content component showcase](docs/src/components.html.md): This page renders theme-native directives and commonly used Sphinx content with sphinx-fuma.
+- [API Reference](autoapi/index.html.md): This page contains auto-generated API reference documentation 1.
+- [sphinx_fuma](autoapi/sphinx_fuma/index.html.md): sphinx_fuma — a Sphinx theme with a fumadocs-style layout.
+- [sphinx_fuma._files](autoapi/sphinx_fuma/_files/index.html.md): The files directive.
+- [sphinx_fuma._nav](autoapi/sphinx_fuma/_nav/index.html.md): Structured navigation data for the templates.
+- [sphinx_fuma._options](autoapi/sphinx_fuma/_options/index.html.md): Normalisation of html_theme_options into template-friendly context values.
+- [sphinx_fuma._steps](autoapi/sphinx_fuma/_steps/index.html.md): The steps directive.
+
+## Full documentation
+
+- [llms-full.txt](llms-full.txt): All pages in one document.

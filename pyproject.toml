@@ -167,6 +167,9 @@ myst-enable-extensions = [
     "html_image",
 ]
 
+[tool.yardang.llms]
+enabled = true
+
 [tool.yardang.html_theme_options]
 announcement = "This documentation is built with sphinx-fuma."
 color_preset = "amber"

@@ -166,7 +166,7 @@ html_theme_options = {
 | `search`                 | `true`      | Boolean                                                             | Shows the search buttons and dialog.                                                         |
 | `fonts`                  | `"bundled"` | `"bundled"`, `"system"`                                             | Loads the bundled Geist and JetBrains Mono fonts or uses system stacks.                      |
 | `sidebar_hide_name`      | `false`     | Boolean                                                             | Hides the project name beside the logo.                                                      |
-| `default_open_level`     | `1`         | Integer                                                             | Sets the sidebar tree depth expanded by default.                                             |
+| `default_open_level`     | `0`         | Integer                                                             | Sets the sidebar tree depth expanded by default.                                             |
 | `github_url`             | `""`        | URL string                                                          | Adds GitHub links and derives edit-page links for GitHub repositories.                       |
 | `edit_page_url_template` | `""`        | URL template                                                        | Overrides the edit-page URL derived from `github_url`.                                       |
 | `nav_links`              | `[]`        | Link mappings, pairs, or a compact string                           | Adds links to the header and sidebar toolbar.                                                |
@@ -196,6 +196,10 @@ The theme also uses standard Sphinx HTML settings:
 `docs` uses the three-column documentation layout. The project header is part of the left sidebar on desktop and becomes a compact top bar at smaller widths.
 
 `notebook` keeps the top bar visible across the page. Both layouts retain the responsive sidebar and page table of contents.
+
+Sidebar folders start collapsed, with the current page’s section and its
+ancestors expanded. Set `default_open_level` to `1` to also expand top-level
+folders, or a higher value to expand deeper levels.
 
 ## Search
 

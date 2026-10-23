@@ -11,7 +11,7 @@
     {%- if fuma_nav_links %}
     <nav class="fd-nav-links" aria-label="{{ _('Site') }}">
       {%- for link in fuma_nav_links %}
-      <a href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>
+      <a{% if link.icon %} class="fd-icon-button"{% endif %} href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}{% if link.icon %} aria-label="{{ link.title|e }}" title="{{ link.title|e }}"{% endif %}>{% if link.icon %}{{ icons.named(link.icon, "fd-icon-" ~ link.icon) }}{% else %}{{ link.title }}{% endif %}</a>
       {%- endfor %}
     </nav>
     {%- endif %}

@@ -81,7 +81,7 @@
   <div class="fd-sidebar-footer">
     <div class="fd-toolbar">
       {%- for link in fuma_nav_links %}
-      <a class="fd-toolbar-item" href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>
+      <a class="fd-toolbar-item" href="{{ link.url|e }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}{% if link.icon %} aria-label="{{ link.title|e }}" title="{{ link.title|e }}"{% endif %}>{% if link.icon %}{{ icons.named(link.icon, "fd-icon-" ~ link.icon) }}{% else %}{{ link.title }}{% endif %}</a>
       {%- endfor %}
       {%- if fuma_github_url %}
       <a class="fd-toolbar-item" href="{{ fuma_github_url|e }}" target="_blank" rel="noopener" aria-label="GitHub">{{ icons.github() }}</a>

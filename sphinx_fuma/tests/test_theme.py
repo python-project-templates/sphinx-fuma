@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import pytest
@@ -12,7 +13,16 @@ project = "Demo"
 html_theme = "fuma"
 html_theme_options = {
     "github_url": "https://github.com/example/demo",
-    "nav_links": [{"title": "Blog", "url": "https://example.com/blog"}],
+    "nav_links": [
+        {"title": "Blog", "url": "https://example.com/blog"},
+        {"title": "PyPI", "url": "https://pypi.org/project/demo/"},
+        {"title": "Conda", "url": "https://anaconda.org/conda-forge/demo"},
+        {"title": "Docs", "url": "https://docs.example.com"},
+        {"title": "Artifactory", "url": "https://example.jfrog.io/ui/repos/tree/General"},
+        {"title": "LLMs", "url": "llms.txt"},
+        {"title": "Home", "url": "index.html"},
+        {"title": "Source", "url": "https://github.com/example/source"},
+    ],
     "light_css_variables": {"color-fd-primary": "red"},
     "sidebar_tabs": [
         {"title": "Guides", "url": "guide.html", "description": "How to", "icon": "rocket", "match": "guide"},
@@ -113,12 +123,63 @@ class TestBuildContext:
         links = build_context({"theme_nav_links": "Blog|https://example.com, Docs|/docs"})["fuma_nav_links"]
         assert links == [
             {"title": "Blog", "url": "https://example.com", "external": True},
-            {"title": "Docs", "url": "/docs", "external": False},
+            {"title": "Docs", "url": "/docs", "external": False, "icon": "book"},
         ]
 
     def test_nav_links_from_mappings(self):
         links = build_context({"theme_nav_links": [{"name": "API", "href": "/api"}]})["fuma_nav_links"]
         assert links == [{"title": "API", "url": "/api", "external": False}]
+
+    @pytest.mark.parametrize(
+        ("title", "url", "icon"),
+        [
+            ("Package", "https://pypi.org/project/demo/", "python"),
+            ("Package", "https://PYPI.ORG/project/demo/?version=1#files", "python"),
+            ("Package", "https://pypi.python.org/pypi/demo", "python"),
+            ("Package", "//pypi.org/project/demo/", "python"),
+            ("Channel", "https://anaconda.org/conda-forge/demo", "conda"),
+            ("Channel", "https://conda.anaconda.org/conda-forge", "conda"),
+            ("Channel", "https://repo.anaconda.com/pkgs/main", "conda"),
+            ("Channel", "https://anaconda.com", "conda"),
+            ("Packages", "https://example.jfrog.io/ui/repos/tree/General", "artifactory"),
+            ("Packages", "https://artifactory.example.com", "artifactory"),
+            ("Packages", "https://packages.example.com/artifactory/python-local/", "artifactory"),
+            ("aRtIfAcToRy", "https://packages.example.com", "artifactory"),
+            ("Guide", "https://demo.readthedocs.io/en/latest/", "book"),
+            ("Guide", "https://demo.readthedocs.org/en/latest/", "book"),
+            ("Guide", "https://docs.example.com", "book"),
+            ("Guide", "/docs/index.html", "book"),
+            ("Guide", "documentation.html", "book"),
+            ("DoCuMeNtAtIoN", "https://example.com/guide", "book"),
+            ("AI", "llms.txt", "sparkles"),
+            ("AI", "../llms-full.txt?download=1#top", "sparkles"),
+            ("AI", "https://example.com/project/llms.txt", "sparkles"),
+            ("Source", "https://github.com/example/demo", "github"),
+            ("Home", "https://example.com", "house"),
+            ("PyPI", "https://packages.example.com/simple", "python"),
+            ("Conda", "https://packages.example.com/channel", "conda"),
+            ("Blog", "https://example.com/blog", ""),
+            ("Package", "https://pypi.org.example.com/project/demo/", ""),
+            ("Guide", "https://example.com/?next=https://docs.example.com", ""),
+            ("Package", "https://example.com/path/anaconda.org/demo", ""),
+            ("Guide", "https://notdocs.example.com", ""),
+            ("Docs", "mailto:docs@example.com", ""),
+            ("Broken", "https://[broken", ""),
+        ],
+    )
+    def test_standard_link_icons(self, title, url, icon):
+        links = build_context({"theme_nav_links": [{"title": title, "url": url}]})["fuma_nav_links"]
+        assert isinstance(links, list)
+        link = links[0]
+        assert link.get("icon", "") == icon
+        assert link["title"] == title
+        assert link["url"] == url
+
+    def test_link_icons_apply_to_pairs(self):
+        links = build_context({"theme_nav_links": [("Package", "https://pypi.org/project/demo/")]})["fuma_nav_links"]
+        assert isinstance(links, list)
+        link = links[0]
+        assert link["icon"] == "python"
 
     def test_css_overrides_render_both_modes(self):
         css = build_context(
@@ -156,6 +217,40 @@ class TestBuildContext:
 
 
 class TestRenderedOutput:
+    @pytest.mark.parametrize(
+        ("region", "closing_tag", "links_container"),
+        [("fd-subnav", "header", "fd-nav-links"), ("fd-sidebar", "aside", "fd-toolbar")],
+    )
+    @pytest.mark.parametrize(
+        ("title", "url", "icon"),
+        [
+            ("PyPI", "https://pypi.org/project/demo/", "python"),
+            ("Conda", "https://anaconda.org/conda-forge/demo", "conda"),
+            ("Docs", "https://docs.example.com", "book"),
+            ("Artifactory", "https://example.jfrog.io/ui/repos/tree/General", "artifactory"),
+            ("LLMs", "llms.txt", "sparkles"),
+            ("Home", "index.html", "house"),
+            ("Source", "https://github.com/example/source", "github"),
+        ],
+    )
+    def test_standard_links_render_accessible_icons(self, built, region, closing_tag, links_container, title, url, icon):
+        html = (built / "guide.html").read_text()
+        region_html = html.split(f'id="{region}"', 1)[1].split(f"</{closing_tag}>", 1)[0]
+        region_html = region_html.split(f'class="{links_container}"', 1)[1]
+        anchor = re.search(r'<a\b[^>]*href="' + re.escape(url) + r'"[^>]*>(.*?)</a>', region_html, re.DOTALL)
+        assert anchor is not None
+        assert f'aria-label="{title}"' in anchor.group(0)
+        assert f'title="{title}"' in anchor.group(0)
+        assert "<svg" in anchor.group(1)
+        assert f"fd-icon-{icon}" in anchor.group(1)
+        assert 'aria-hidden="true"' in anchor.group(1)
+        assert re.sub(r"<[^>]+>", "", anchor.group(1)).strip() == ""
+        assert ('target="_blank"' in anchor.group(0)) == url.startswith("https://")
+
+    def test_unknown_navigation_link_retains_text(self, built):
+        html = (built / "guide.html").read_text()
+        assert html.count('href="https://example.com/blog" target="_blank" rel="noopener">Blog</a>') == 2
+
     def test_static_assets_are_copied(self, built):
         static = built / "_static"
         assert (static / "fuma.css").is_file()

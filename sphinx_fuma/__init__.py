@@ -13,7 +13,7 @@ from ._options import build_context
 from ._steps import setup_steps
 
 __all__ = ("THEME_DIR", "THEME_NAME", "setup")
-__version__ = "0.1.7"
+__version__ = "0.2.0"
 
 THEME_DIR = Path(__file__).parent
 THEME_NAME = "fuma"

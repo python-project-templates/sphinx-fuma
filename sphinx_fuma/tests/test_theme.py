@@ -107,6 +107,7 @@ class TestBuildContext:
         context = build_context({})
         assert context["fuma_layout"] == "docs"
         assert context["fuma_toc_style"] == "normal"
+        assert context["fuma_hide_toc"] is False
         assert context["fuma_search"] is True
         assert context["fuma_nav_links"] == []
         assert context["fuma_default_open_level"] == 0
@@ -119,6 +120,14 @@ class TestBuildContext:
     def test_flags_accept_theme_conf_strings(self):
         assert build_context({"theme_search": "false"})["fuma_search"] is False
         assert build_context({"theme_sidebar_hide_name": "true"})["fuma_sidebar_hide_name"] is True
+
+    @pytest.mark.parametrize("value", [True, "true", "yes", "on", "1", "", None])
+    def test_hide_toc_metadata(self, value):
+        assert build_context({"meta": {"hide-toc": value}})["fuma_hide_toc"] is True
+
+    @pytest.mark.parametrize("value", [False, "false", "no", "off", "0"])
+    def test_hide_toc_can_be_disabled(self, value):
+        assert build_context({"meta": {"hide-toc": value}})["fuma_hide_toc"] is False
 
     def test_nav_links_from_string(self):
         links = build_context({"theme_nav_links": "Blog|https://example.com, Docs|/docs"})["fuma_nav_links"]

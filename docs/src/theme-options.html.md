@@ -55,6 +55,36 @@ Sidebar folders start collapsed, with the current page’s section and its
 ancestors expanded. Set `default_open_level` to `1` to also expand top-level
 folders, or a higher value to expand deeper levels.
 
+## Page navigation
+
+The right sidebar shows “On this page” links and page actions. Readers can
+collapse and restore it with the panel button. This preference is saved in the
+browser independently of the left sidebar. At smaller widths, “On this page”
+remains available as a dropdown.
+
+The right sidebar is visible by default, including on the home page. The
+`hide-toc` page metadata flag hides the entire right sidebar, its collapse and
+restore buttons, and the mobile dropdown for that page. Its layout space is
+removed as well.
+
+MyST Markdown frontmatter:
+
+```yaml
+---
+hide-toc: true
+---
+```
+
+reStructuredText metadata, before the page title:
+
+```rst
+:hide-toc:
+```
+
+An empty value or `true`, `yes`, `on`, or `1` hides the sidebar. `false`, `no`,
+`off`, or `0` keeps it visible. To hide navigation on the home page only, add
+the flag to that page’s source.
+
 ## Search
 
 Search uses the static index provided by sphinx-searchlite. Readers can open the dialog from the header or sidebar, with <kbd>/</kbd>, or with <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>K</kbd>. Arrow keys move through results, <kbd>Enter</kbd> follows the selected result, and <kbd>Esc</kbd> closes the dialog.

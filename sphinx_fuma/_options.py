@@ -241,8 +241,10 @@ def build_context(context: dict) -> dict[str, object]:
         context.get("theme_light_css_variables"),
         context.get("theme_dark_css_variables"),
     )
+    metadata = context.get("meta") or {}
     return {
         "fuma_layout": _choice(context.get("theme_layout"), _LAYOUTS, "docs"),
+        "fuma_hide_toc": "hide-toc" in metadata and (_text(metadata["hide-toc"]) == "" or _flag(metadata["hide-toc"])),
         "fuma_toc_style": _choice(context.get("theme_toc_style"), _TOC_STYLES, "normal"),
         "fuma_fonts": _choice(context.get("theme_fonts"), _FONTS, "bundled"),
         "fuma_search": _flag(context.get("theme_search"), True),

@@ -1,7 +1,12 @@
 {% import "partials/icons.html" as icons with context %}
 <nav id="fd-toc" aria-label="{{ _('On this page') }}">
+  <div class="fd-toc-header">
   {%- if fuma_toc %}
-  <p class="fd-toc-title">{{ icons.list() }}{{ _('On this page') }}</p>
+    <p class="fd-toc-title">{{ icons.list() }}{{ _('On this page') }}</p>
+  {%- endif %}
+    <button type="button" class="fd-icon-button fd-toc-collapse" aria-label="{{ _('Collapse page navigation') }}" title="{{ _('Collapse page navigation') }}" aria-controls="fd-toc" aria-expanded="true">{{ icons.panel_right() }}</button>
+  </div>
+  {%- if fuma_toc %}
   <div class="fd-toc-body">
     {#- Both paths are generated at runtime; the thumb is clipped to the visible range. -#}
     <svg class="fd-toc-rail" aria-hidden="true" preserveAspectRatio="none">
@@ -23,3 +28,4 @@
   </div>
   {%- endif %}
 </nav>
+<button type="button" id="fd-toc-restore" class="fd-icon-button" aria-label="{{ _('Expand page navigation') }}" title="{{ _('Expand page navigation') }}" aria-controls="fd-toc" aria-expanded="false">{{ icons.panel_right() }}</button>

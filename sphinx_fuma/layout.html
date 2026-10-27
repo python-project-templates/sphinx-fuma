@@ -12,6 +12,7 @@
             root.style.colorScheme = stored === "dark" ? "dark" : "light";
           }
           if (localStorage.getItem("fuma-sidebar") === "collapsed") root.dataset.sidebarCollapsed = "true";
+          if (localStorage.getItem("fuma-toc") === "collapsed") root.dataset.tocCollapsed = "true";
         } catch (e) {}
       })();
     </script>
@@ -21,7 +22,7 @@
 {%- endblock %}
 
 {%- block body_tag %}
-<body class="fd-body" data-layout="{{ fuma_layout }}" data-toc-style="{{ fuma_toc_style }}" data-open-level="{{ fuma_default_open_level }}">
+<body class="fd-body" data-layout="{{ fuma_layout }}" data-toc-style="{{ fuma_toc_style }}" data-open-level="{{ fuma_default_open_level }}"{% if fuma_hide_toc %} data-hide-toc="true"{% endif %}>
 {%- endblock %}
 
 {%- block relbar1 %}{% endblock %}
@@ -35,7 +36,7 @@
   {%- include "partials/subnav.html" %}
   {%- include "partials/sidebar.html" %}
 
-  {%- if fuma_toc %}
+  {%- if fuma_toc and not fuma_hide_toc %}
   <div id="fd-toc-popover">
     <button type="button" class="fd-toc-trigger" aria-expanded="false" aria-controls="fd-toc-mobile" title="{{ _('On this page') }}">
       {{ icons.list() }}<span>{{ _('On this page') }}</span>{{ icons.chevron_down() }}
@@ -55,7 +56,7 @@
     </article>
   </main>
 
-  {%- include "partials/toc.html" %}
+  {%- if not fuma_hide_toc %}{% include "partials/toc.html" %}{% endif %}
 </div>
 {%- if fuma_search %}{% include "partials/search.html" %}{% endif %}
 {%- endblock %}

@@ -9,8 +9,8 @@ normalised shape, so everything is coerced here rather than in Jinja.
 
 ## Functions
 
-| [`build_context`](#sphinx_fuma._options.build_context)(→ dict[str, object])   | Return the `fuma_*` context entries derived from the theme options.   |
-|-------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| [`build_context`](#sphinx_fuma._options.build_context)(context) → dict[str, object]   | Return the `fuma_*` context entries derived from the theme options.   |
+|---------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
 
 ## Module Contents
 

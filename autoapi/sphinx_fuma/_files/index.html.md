@@ -8,8 +8,8 @@ presence of children marks an entry as a directory.
 
 ## Functions
 
-| [`setup_files`](#sphinx_fuma._files.setup_files)(→ None)   |    |
-|------------------------------------------------------------|----|
+| [`setup_files`](#sphinx_fuma._files.setup_files)(app) → None   |    |
+|----------------------------------------------------------------|----|
 
 ## Module Contents
 

@@ -10,10 +10,10 @@ directly.
 
 ## Functions
 
-| [`sidebar_tree`](#sphinx_fuma._nav.sidebar_tree)(→ list[dict])   | Return the global toctree as a list of `{caption, entries}` groups.        |
-|------------------------------------------------------------------|----------------------------------------------------------------------------|
-| [`page_toc`](#sphinx_fuma._nav.page_toc)(→ list[dict])           | Return the page-local headings, excluding the document title.              |
-| [`breadcrumbs`](#sphinx_fuma._nav.breadcrumbs)(→ list[dict])     | Return ancestor pages, dropping the root so it can be rendered separately. |
+| [`sidebar_tree`](#sphinx_fuma._nav.sidebar_tree)(app, pagename[, maxdepth]) → list[dict]   | Return the global toctree as a list of `{caption, entries}` groups.        |
+|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [`page_toc`](#sphinx_fuma._nav.page_toc)(app, pagename) → list[dict]                       | Return the page-local headings, excluding the document title.              |
+| [`breadcrumbs`](#sphinx_fuma._nav.breadcrumbs)(context) → list[dict]                       | Return ancestor pages, dropping the root so it can be rendered separately. |
 
 ## Module Contents
 

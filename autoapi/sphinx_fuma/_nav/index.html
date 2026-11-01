@@ -241,13 +241,13 @@ directly.</p>
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sphinx_fuma._nav.sidebar_tree" title="sphinx_fuma._nav.sidebar_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sidebar_tree</span></code></a>(→ list[dict])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sphinx_fuma._nav.sidebar_tree" title="sphinx_fuma._nav.sidebar_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sidebar_tree</span></code></a>(app, pagename[, maxdepth]) → list[dict]</p></td>
 <td><p>Return the global toctree as a list of <code class="docutils literal notranslate"><span class="pre">{caption,</span> <span class="pre">entries}</span></code> groups.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sphinx_fuma._nav.page_toc" title="sphinx_fuma._nav.page_toc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">page_toc</span></code></a>(→ list[dict])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sphinx_fuma._nav.page_toc" title="sphinx_fuma._nav.page_toc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">page_toc</span></code></a>(app, pagename) → list[dict]</p></td>
 <td><p>Return the page-local headings, excluding the document title.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sphinx_fuma._nav.breadcrumbs" title="sphinx_fuma._nav.breadcrumbs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">breadcrumbs</span></code></a>(→ list[dict])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sphinx_fuma._nav.breadcrumbs" title="sphinx_fuma._nav.breadcrumbs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">breadcrumbs</span></code></a>(context) → list[dict]</p></td>
 <td><p>Return ancestor pages, dropping the root so it can be rendered separately.</p></td>
 </tr>
 </tbody>

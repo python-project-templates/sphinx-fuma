@@ -16,8 +16,8 @@ here is affiliated with or endorsed by that project.
 
 ## Functions
 
-| [`setup`](#sphinx_fuma.setup)(→ dict[str, object])   |    |
-|------------------------------------------------------|----|
+| [`setup`](#sphinx_fuma.setup)(app) → dict[str, object]   |    |
+|----------------------------------------------------------|----|
 
 ## Package Contents
 

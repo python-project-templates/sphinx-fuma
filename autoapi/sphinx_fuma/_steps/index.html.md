@@ -8,8 +8,8 @@ stylesheet draws the rail from the headings inside it.
 
 ## Functions
 
-| [`setup_steps`](#sphinx_fuma._steps.setup_steps)(→ None)   |    |
-|------------------------------------------------------------|----|
+| [`setup_steps`](#sphinx_fuma._steps.setup_steps)(app) → None   |    |
+|----------------------------------------------------------------|----|
 
 ## Module Contents
 

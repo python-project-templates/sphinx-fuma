@@ -564,8 +564,8 @@ here is affiliated with or endorsed by that project.
 
 ## Functions
 
-| [`setup`](#sphinx_fuma.setup)(→ dict[str, object])   |    |
-|------------------------------------------------------|----|
+| [`setup`](#sphinx_fuma.setup)(app) → dict[str, object]   |    |
+|----------------------------------------------------------|----|
 
 ## Package Contents
 
@@ -587,8 +587,8 @@ presence of children marks an entry as a directory.
 
 ## Functions
 
-| [`setup_files`](#sphinx_fuma._files.setup_files)(→ None)   |    |
-|------------------------------------------------------------|----|
+| [`setup_files`](#sphinx_fuma._files.setup_files)(app) → None   |    |
+|----------------------------------------------------------------|----|
 
 ## Module Contents
 
@@ -608,10 +608,10 @@ directly.
 
 ## Functions
 
-| [`sidebar_tree`](#sphinx_fuma._nav.sidebar_tree)(→ list[dict])   | Return the global toctree as a list of `{caption, entries}` groups.        |
-|------------------------------------------------------------------|----------------------------------------------------------------------------|
-| [`page_toc`](#sphinx_fuma._nav.page_toc)(→ list[dict])           | Return the page-local headings, excluding the document title.              |
-| [`breadcrumbs`](#sphinx_fuma._nav.breadcrumbs)(→ list[dict])     | Return ancestor pages, dropping the root so it can be rendered separately. |
+| [`sidebar_tree`](#sphinx_fuma._nav.sidebar_tree)(app, pagename[, maxdepth]) → list[dict]   | Return the global toctree as a list of `{caption, entries}` groups.        |
+|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [`page_toc`](#sphinx_fuma._nav.page_toc)(app, pagename) → list[dict]                       | Return the page-local headings, excluding the document title.              |
+| [`breadcrumbs`](#sphinx_fuma._nav.breadcrumbs)(context) → list[dict]                       | Return ancestor pages, dropping the root so it can be rendered separately. |
 
 ## Module Contents
 
@@ -640,8 +640,8 @@ normalised shape, so everything is coerced here rather than in Jinja.
 
 ## Functions
 
-| [`build_context`](#sphinx_fuma._options.build_context)(→ dict[str, object])   | Return the `fuma_*` context entries derived from the theme options.   |
-|-------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| [`build_context`](#sphinx_fuma._options.build_context)(context) → dict[str, object]   | Return the `fuma_*` context entries derived from the theme options.   |
+|---------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
 
 ## Module Contents
 
@@ -661,8 +661,8 @@ stylesheet draws the rail from the headings inside it.
 
 ## Functions
 
-| [`setup_steps`](#sphinx_fuma._steps.setup_steps)(→ None)   |    |
-|------------------------------------------------------------|----|
+| [`setup_steps`](#sphinx_fuma._steps.setup_steps)(app) → None   |    |
+|----------------------------------------------------------------|----|
 
 ## Module Contents
 

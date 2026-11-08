@@ -40,7 +40,14 @@ Run the normal Sphinx HTML builder.
 
 The `files` directive turns a nested list into a compact project tree. A trailing slash or child list marks a folder.
 
-docsconf.pyindex.mdsrcexampleinit.pypyproject.toml
+- docs/
+  - conf.py
+  - index.md
+- src/
+  - example/
+    - **init**.py
+- pyproject.toml
+
 ```markdown
 ```{files}
 - docs/
@@ -55,16 +62,12 @@ docsconf.pyindex.mdsrcexampleinit.pypyproject.toml
 
 ## Admonitions
 
-#### NOTE
 Notes use the neutral informational treatment.
 
-#### TIP
 Tips and important messages use the positive accent treatment.
 
-#### WARNING
 Warnings, cautions, and attention messages use the warning treatment.
 
-#### DANGER
 Danger and error messages use the destructive treatment.
 
 ## Code
@@ -97,6 +100,9 @@ html_theme_options = {
 ## Cards
 
 [Sphinx Design](https://sphinx-design.readthedocs.io/) cards inherit the theme’s border, surface, and radius tokens. Install and enable `sphinx-design` to use its directives outside Yardang.
+
+* **gutter:**
+  3
 
 The sidebar, header, and table of contents adapt across screen sizes.
 

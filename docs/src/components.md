@@ -10,7 +10,7 @@ This page renders theme-native directives and commonly used Sphinx content with 
 
 The `steps` directive turns its child headings into a numbered walkthrough.
 
-::::{steps}
+::::\{steps}
 
 ### Install the package
 
@@ -45,7 +45,7 @@ Run the normal Sphinx HTML builder.
 
 The `files` directive turns a nested list into a compact project tree. A trailing slash or child list marks a folder.
 
-::::{files}
+::::\{files}
 
 - docs/
   - conf.py
@@ -70,19 +70,19 @@ The `files` directive turns a nested list into a compact project tree. A trailin
 
 ## Admonitions
 
-:::{note}
+:::\{note}
 Notes use the neutral informational treatment.
 :::
 
-:::{tip}
+:::\{tip}
 Tips and important messages use the positive accent treatment.
 :::
 
-:::{warning}
+:::\{warning}
 Warnings, cautions, and attention messages use the warning treatment.
 :::
 
-:::{danger}
+:::\{danger}
 Danger and error messages use the destructive treatment.
 :::
 
@@ -118,22 +118,22 @@ html_theme_options = {
 
 [Sphinx Design](https://sphinx-design.readthedocs.io/) cards inherit the theme's border, surface, and radius tokens. Install and enable `sphinx-design` to use its directives outside Yardang.
 
-::::{grid} 1 2 2 2
+::::\{grid} 1 2 2 2
 :gutter: 3
 
-:::{grid-item-card} Responsive layout
+:::\{grid-item-card} Responsive layout
 The sidebar, header, and table of contents adapt across screen sizes.
 :::
 
-:::{grid-item-card} Local search
+:::\{grid-item-card} Local search
 The search dialog uses a static index and requires no hosted service.
 :::
 
-:::{grid-item-card} Color modes
+:::\{grid-item-card} Color modes
 Light and dark palettes follow system preference and reader choice.
 :::
 
-:::{grid-item-card} Structured navigation
+:::\{grid-item-card} Structured navigation
 Page icons, section tabs, breadcrumbs, and pagination keep large sites navigable.
 :::
 ::::
@@ -142,8 +142,8 @@ Page icons, section tabs, breadcrumbs, and pagination keep large sites navigable
 
 Sphinx Design tab sets use a compact framed treatment.
 
-::::{tab-set}
-:::{tab-item} pip
+::::\{tab-set}
+:::\{tab-item} pip
 
 ```console
 pip install sphinx-fuma
@@ -151,7 +151,7 @@ pip install sphinx-fuma
 
 :::
 
-:::{tab-item} conda
+:::\{tab-item} conda
 
 ```console
 conda install -c conda-forge sphinx-fuma
